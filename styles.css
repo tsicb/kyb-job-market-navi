@@ -335,3 +335,21 @@ select {
 .sort-active .sort-indicator {
   color: #175cd3;
 }
+
+/* v1.1.5: 選択対象の表現統一 */
+.selected-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 18px;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: #eef4ff;
+  border: 1px solid #c7d7fe;
+  color: #3538cd;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 800;
+  vertical-align: middle;
+  white-space: nowrap;
+}

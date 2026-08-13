@@ -845,7 +845,7 @@
     els.selectedPanel.hidden = false;
     els.resultsPanel.hidden = false;
     els.selectedJobCard.innerHTML = `
-      <div class="label">本人職種</div>
+      <div class="label">選択対象</div>
       <h3>${escapeHtml(c.job_name)}</h3>
       <div class="breadcrumb">${escapeHtml(c.major_category)} ＞ ${escapeHtml(c.middle_category)}</div>
       <span class="concept-chip">${escapeHtml(c.concept_type)}</span>`;
@@ -898,7 +898,7 @@
 
   function refreshRelatedResults() {
     state.related = computeRelated(state.selectedJobId, state.expandLevel);
-    els.relatedCount.textContent = `本人を含む ${state.related.length}職種を比較対象として抽出`;
+    els.relatedCount.textContent = `選択対象を含む ${state.related.length}項目を比較対象として抽出`;
     fillRelatedJobSelects();
     renderAllResults();
   }
@@ -906,7 +906,7 @@
   function fillRelatedJobSelects() {
     const options = state.related.map(r => `<option value="${escapeHtml(r.job_id)}">${escapeHtml(r.job_name)}</option>`).join("");
     els.prefJobSelect.innerHTML = options;
-    els.conditionJobSelect.innerHTML = `<option value="all">本人＋周辺職種すべて（${state.related.length}職種）</option>${options}`;
+    els.conditionJobSelect.innerHTML = `<option value="all">選択対象＋関連項目すべて（${state.related.length}項目）</option>${options}`;
   }
 
   function renderAllResults() {
@@ -949,10 +949,10 @@
       .sort((a,b) => b.v - a.v);
 
     els.summaryHighlights.innerHTML = [
-      ["本人｜正社員給与", formatSalary(base.regular_salary_median_10k_yen, "regular"), state.idx.classById.get(state.selectedJobId).job_name],
-      ["本人｜正社員求人数", `${formatInt(base.regular_jobs_current)}件`, "現在求人数"],
-      ["周辺内｜正社員給与最高", salaryRows.length ? formatSalary(salaryRows[0].v, "regular") : "—", salaryRows.length ? salaryRows[0].job_name : ""],
-      ["周辺内｜正社員求人最大", countRows.length ? `${formatInt(countRows[0].v)}件` : "—", countRows.length ? countRows[0].job_name : ""]
+      ["選択対象｜正社員給与", formatSalary(base.regular_salary_median_10k_yen, "regular"), state.idx.classById.get(state.selectedJobId).job_name],
+      ["選択対象｜正社員求人数", `${formatInt(base.regular_jobs_current)}件`, "現在求人数"],
+      ["関連内｜正社員給与最高", salaryRows.length ? formatSalary(salaryRows[0].v, "regular") : "—", salaryRows.length ? salaryRows[0].job_name : ""],
+      ["関連内｜正社員求人最大", countRows.length ? `${formatInt(countRows[0].v)}件` : "—", countRows.length ? countRows[0].job_name : ""]
     ].map(([k,v,s]) => `<div class="highlight-card"><div class="kicker">${escapeHtml(k)}</div><div class="value">${escapeHtml(v)}</div><div class="sub">${escapeHtml(s)}</div></div>`).join("");
 
     const head = `<thead>
@@ -962,17 +962,17 @@
       </tr>
       <tr>
         ${sortableHeader("summary", "regular_salary_median_10k_yen", "正社員")}
-        <th>本人差</th>
+        <th>選択対象との差</th>
         ${sortableHeader("summary", "parttime_salary_median_yen_hour", "パート")}
-        <th>本人差</th>
+        <th>選択対象との差</th>
         ${sortableHeader("summary", "temp_salary_median_yen_hour", "派遣")}
-        <th>本人差</th>
+        <th>選択対象との差</th>
         ${sortableHeader("summary", "regular_jobs_current", "正社員")}
-        <th>本人比</th>
+        <th>選択対象比</th>
         ${sortableHeader("summary", "parttime_jobs_current", "パート")}
-        <th>本人比</th>
+        <th>選択対象比</th>
         ${sortableHeader("summary", "temp_jobs_current", "派遣")}
-        <th>本人比</th>
+        <th>選択対象比</th>
       </tr>
     </thead>`;
 
@@ -991,7 +991,7 @@
       const pr = jobRatio(r.job_id, "parttime_jobs_current");
       const tr = jobRatio(r.job_id, "temp_jobs_current");
       return `<tr class="${r.job_id === state.selectedJobId ? "self-row" : ""}">
-        <td class="left"><strong>${escapeHtml(r.job_name)}</strong><br><span class="muted">${escapeHtml(r.major_category)} ＞ ${escapeHtml(r.middle_category)}</span></td>
+        <td class="left"><strong>${escapeHtml(r.job_name)}</strong>${r.job_id === state.selectedJobId ? ' <span class="selected-badge">選択中</span>' : ""}<br><span class="muted">${escapeHtml(r.major_category)} ＞ ${escapeHtml(r.middle_category)}</span></td>
         <td class="left">${escapeHtml(r.reason)}<br><span class="muted">score ${r.score}</span></td>
         <td class="num">${formatSalary(d.regular_salary_median_10k_yen, "regular")}</td>
         <td class="num ${metricClass(rd)}">${formatDiff(rd, "regular")}</td>
@@ -1017,31 +1017,46 @@
     const selectedPref = els.prefectureSelect.value || "東京都";
     const selectedJobId = els.prefJobSelect.value || state.selectedJobId;
     const selectedJob = state.idx.classById.get(selectedJobId);
+    const selectionTarget = state.idx.classById.get(state.selectedJobId);
 
     els.prefectureControl.hidden = false;
     els.prefJobControl.hidden = false;
 
     if (mode === "compare") {
       els.prefectureControlLabel.textContent = "固定する都道府県";
-      els.prefJobControlLabel.textContent = "注目する職種";
+      els.prefJobControlLabel.textContent = "基準にする職種";
     } else {
-      els.prefectureControlLabel.textContent = "注目する都道府県";
+      els.prefectureControlLabel.textContent = "基準にする都道府県";
       els.prefJobControlLabel.textContent = "固定する職種";
     }
 
     const salaryColumns = emp === "all"
       ? [
-          { emp: "regular", label: "正社員 年収（万円）" },
-          { emp: "parttime", label: "パート 時給（円）" },
-          { emp: "temp", label: "派遣 時給（円）" }
+          { emp: "regular", label: "正社員 年収（万円）", diffLabel: "基準との差（万円）" },
+          { emp: "parttime", label: "パート 時給（円）", diffLabel: "基準との差（円）" },
+          { emp: "temp", label: "派遣 時給（円）", diffLabel: "基準との差（円）" }
         ]
-      : [{ emp, label: emp === "regular" ? "正社員 年収（万円）" : `${EMP[emp].label} 時給（円）` }];
+      : [{
+          emp,
+          label: emp === "regular" ? "正社員 年収（万円）" : `${EMP[emp].label} 時給（円）`,
+          diffLabel: emp === "regular" ? "基準との差（万円）" : "基準との差（円）"
+        }];
 
     ensureSortKeyVisible("prefecture", salaryColumns.map(c => c.emp));
-    const salaryHead = salaryColumns.map(c => sortableHeader("prefecture", c.emp, c.label)).join("");
+    const salaryHead = salaryColumns.map(c =>
+      `${sortableHeader("prefecture", c.emp, c.label)}<th>${escapeHtml(c.diffLabel)}</th>`
+    ).join("");
+
+    const renderSalaryPair = (row, baseRow, col) => {
+      const value = numberOrNull(row?.[EMP[col.emp].prefSalary]);
+      const baseValue = numberOrNull(baseRow?.[EMP[col.emp].prefSalary]);
+      const diff = value === null || baseValue === null ? null : value - baseValue;
+      return `<td class="num">${formatSalary(value, col.emp)}</td><td class="num ${metricClass(diff)}">${formatDiff(diff, col.emp)}</td>`;
+    };
 
     if (mode === "compare") {
       const pref = selectedPref;
+      const baseRow = state.idx.prefByJob.get(selectedJobId)?.get(pref);
       const defaultRows = state.related.map(r => ({
         ...r,
         prefRow: state.idx.prefByJob.get(r.job_id)?.get(pref)
@@ -1052,7 +1067,7 @@
         (r, key) => r.prefRow?.[EMP[key].prefSalary]
       );
 
-      els.prefCaption.innerHTML = `<strong>${escapeHtml(pref)}</strong>を固定して、本人職種と周辺職種の給与を比較しています。<span class="caption-sub">注目：${escapeHtml(selectedJob?.job_name || "")}</span>`;
+      els.prefCaption.innerHTML = `<strong>${escapeHtml(pref)}</strong>を固定して、<strong>${escapeHtml(selectionTarget?.job_name || "")}</strong>と関連項目の給与を比較しています。<span class="caption-sub">基準：${escapeHtml(selectedJob?.job_name || "")}</span>`;
       els.prefTable.innerHTML = `<thead><tr>
           <th>職種</th>
           <th class="fixed-axis-head">都道府県 <span class="column-badge">固定</span></th>
@@ -1063,13 +1078,14 @@
           return `<tr class="${isFocus ? "focus-row" : ""}">
             <td class="left">${escapeHtml(r.job_name)}${isFocus ? ' <span class="focus-badge">基準</span>' : ""}</td>
             <td class="left fixed-axis-cell">${escapeHtml(pref)}</td>
-            ${salaryColumns.map(c => `<td class="num">${formatSalary(r.prefRow?.[EMP[c.emp].prefSalary], c.emp)}</td>`).join("")}
+            ${salaryColumns.map(c => renderSalaryPair(r.prefRow, baseRow, c)).join("")}
           </tr>`;
         }).join("")}</tbody>`;
     } else {
       const jobId = selectedJobId;
       const c = state.idx.classById.get(jobId);
       const byPref = state.idx.prefByJob.get(jobId) || new Map();
+      const baseRow = byPref.get(selectedPref);
       const defaultRows = PREFECTURES.map(pref => ({ pref, prefRow: byPref.get(pref) }));
       const rows = sortRowsNumeric(
         defaultRows,
@@ -1077,7 +1093,7 @@
         (r, key) => r.prefRow?.[EMP[key].prefSalary]
       );
 
-      els.prefCaption.innerHTML = `<strong>${escapeHtml(c?.job_name || "")}</strong>を固定して、47都道府県の給与を比較しています。<span class="caption-sub">注目：${escapeHtml(selectedPref)}</span>`;
+      els.prefCaption.innerHTML = `<strong>${escapeHtml(c?.job_name || "")}</strong>を固定して、47都道府県の給与を比較しています。<span class="caption-sub">基準：${escapeHtml(selectedPref)}</span>`;
       els.prefTable.innerHTML = `<thead><tr>
           <th class="fixed-axis-head">職種 <span class="column-badge">固定</span></th>
           <th>都道府県</th>
@@ -1088,7 +1104,7 @@
           return `<tr class="${isFocus ? "focus-row" : ""}">
             <td class="left fixed-axis-cell">${escapeHtml(c?.job_name || "")}</td>
             <td class="left">${escapeHtml(r.pref)}${isFocus ? ' <span class="focus-badge">基準</span>' : ""}</td>
-            ${salaryColumns.map(col => `<td class="num">${formatSalary(r.prefRow?.[EMP[col.emp].prefSalary], col.emp)}</td>`).join("")}
+            ${salaryColumns.map(col => renderSalaryPair(r.prefRow, baseRow, col)).join("")}
           </tr>`;
         }).join("")}</tbody>`;
     }
@@ -1166,7 +1182,7 @@
     });
     svg += `</svg>`;
 
-    const legend = `<div class="chart-legend">${jobs.map((j,i) => `<span class="legend-item"><i class="legend-dot" style="background:${palette[i%palette.length]}"></i>${escapeHtml(j.job_name)}${j.job_id === state.selectedJobId ? "（本人）" : ""}</span>`).join("")}</div>`;
+    const legend = `<div class="chart-legend">${jobs.map((j,i) => `<span class="legend-item"><i class="legend-dot" style="background:${palette[i%palette.length]}"></i>${escapeHtml(j.job_name)}${j.job_id === state.selectedJobId ? "（選択中）" : ""}</span>`).join("")}</div>`;
     return svg + legend;
   }
 

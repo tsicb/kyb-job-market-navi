@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="求人ボックスの職種別市場データを、関連職種とあわせて検索・比較するツール">
-  <title>求人市場ナビ｜職種・周辺職種の給与と求人動向</title>
+  <meta name="description" content="求人ボックスの市場データを、選択対象と関連項目で検索・比較するツール">
+  <title>求人市場ナビ｜選択対象・関連項目の給与と求人動向</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%232563eb%22/><path d=%22M16 44V21h9l7 9 7-9h9v23h-8V32l-8 10-8-10v12z%22 fill=%22white%22/></svg>">
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -14,7 +14,7 @@
       <div>
         <div class="eyebrow">JOB MARKET NAVI</div>
         <h1>求人市場ナビ</h1>
-        <p>知りたい職種を起点に、周辺職種まで給与・求人数・地域差・推移を比較</p>
+        <p>知りたい職種・業態・専門領域などを起点に、関連項目まで給与・求人数・地域差・推移を比較</p>
       </div>
       <div id="dataStatus" class="status-pill">データ読込中…</div>
     </div>
@@ -63,14 +63,14 @@
       <div class="section-heading compact">
         <div>
           <span class="step">STEP 2</span>
-          <h2>本人職種と周辺範囲を決める</h2>
+          <h2>選択対象と関連範囲を決める</h2>
         </div>
       </div>
 
       <div class="selected-layout">
         <div id="selectedJobCard" class="selected-job-card"></div>
         <div class="level-control">
-          <div class="control-label">周辺職種の広げ方</div>
+          <div class="control-label">関連範囲の広げ方</div>
           <div class="segmented" id="levelButtons">
             <button type="button" data-level="1">1｜厳密<span>同義・略称中心</span></button>
             <button type="button" data-level="2" class="active">2｜標準<span>近縁＋同じ中分類</span></button>
@@ -99,7 +99,7 @@
 
       <div id="tab-summary" class="tab-panel active">
         <div id="summaryHighlights" class="highlights"></div>
-        <div class="table-note">緑＝本人より高い／多い　赤＝本人より低い／少ない</div>
+        <div class="table-note">緑＝選択対象より高い／多い　赤＝選択対象より低い／少ない</div>
         <div class="table-wrap">
           <table id="summaryTable" class="data-table wide"></table>
         </div>
@@ -129,6 +129,7 @@
           </label>
         </div>
         <div id="prefCaption" class="section-caption"></div>
+        <div class="table-note">緑＝基準より高い　赤＝基準より低い</div>
         <div class="table-wrap">
           <table id="prefTable" class="data-table"></table>
         </div>
@@ -164,7 +165,7 @@
         <div class="toolbar">
           <label>職種
             <select id="conditionJobSelect">
-              <option value="all">本人＋周辺職種すべて</option>
+              <option value="all">選択対象＋関連項目すべて</option>
             </select>
           </label>
           <label>雇用形態
