@@ -133,6 +133,22 @@
       .replace(/'/g, "&#39;");
   }
 
+  function safeExternalUrl(value) {
+    try {
+      const url = new URL(String(value || ""));
+      return (url.protocol === "https:" || url.protocol === "http:") ? url.href : "";
+    } catch {
+      return "";
+    }
+  }
+
+  function sourceJobNameHtml(jobId, jobName) {
+    const sourceUrl = safeExternalUrl(summaryValues(jobId)?.source_url);
+    const label = escapeHtml(jobName);
+    if (!sourceUrl) return `<strong>${label}</strong>`;
+    return `<a class="source-job-link" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer" title="求人ボックスの元ページを新しいタブで開く"><strong>${label}</strong><span class="external-mark" aria-hidden="true">↗</span></a>`;
+  }
+
   function numberOrNull(v) {
     if (v === null || v === undefined || v === "") return null;
     const n = Number(String(v).replace(/,/g, ""));
@@ -1182,7 +1198,7 @@
       const pr = jobRatio(r.job_id, "parttime_jobs_current");
       const tr = jobRatio(r.job_id, "temp_jobs_current");
       return `<tr class="${r.job_id === state.selectedJobId ? "self-row" : ""}">
-        <td class="left"><strong>${escapeHtml(r.job_name)}</strong>${r.job_id === state.selectedJobId ? ' <span class="selected-badge">選択中</span>' : ""}<br><span class="muted">${escapeHtml(r.major_category)} ＞ ${escapeHtml(r.middle_category)}</span></td>
+        <td class="left">${sourceJobNameHtml(r.job_id, r.job_name)}${r.job_id === state.selectedJobId ? ' <span class="selected-badge">選択中</span>' : ""}<br><span class="muted">${escapeHtml(r.major_category)} ＞ ${escapeHtml(r.middle_category)}</span></td>
         <td class="left">${escapeHtml(r.reason)}<br><span class="muted">score ${r.score}</span></td>
         <td class="num">${formatSalary(d.regular_salary_median_10k_yen, "regular")}</td>
         <td class="num ${metricClass(rd)}">${formatDiff(rd, "regular")}</td>

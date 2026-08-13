@@ -244,6 +244,43 @@ select:focus-visible {
   background:#EEF7FA; color:#59657a; font-size:11px; line-height:1.6;
 }
 .source-note strong { flex:none; color:#344054; }
+
+.source-note a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.source-note a:hover { color:#1565C0; }
+.source-note a:focus-visible {
+  outline:2px solid rgba(30,136,229,.32);
+  outline-offset:2px;
+  border-radius:3px;
+}
+
+/* v1.1.9: 全国市場から求人ボックス元ページへ */
+.source-job-link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+}
+.source-job-link .external-mark {
+  margin-left:4px;
+  color:#8AA0B6;
+  font-size:.9em;
+  font-weight:700;
+}
+.source-job-link:hover {
+  color:var(--primary);
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+.source-job-link:hover .external-mark { color:var(--secondary); }
+.source-job-link:focus-visible {
+  outline:2px solid rgba(30,136,229,.35);
+  outline-offset:2px;
+  border-radius:3px;
+}
 .toast {
   position:fixed; right:18px; bottom:18px; max-width:420px; z-index:100; background:#172033; color:white; padding:12px 15px; border-radius:9px; box-shadow:var(--shadow); font-size:12px;
 }
