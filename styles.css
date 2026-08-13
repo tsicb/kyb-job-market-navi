@@ -286,3 +286,52 @@ select {
     margin: 3px 0 0;
   }
 }
+
+/* v1.1.4: numeric column sorting */
+.data-table thead th.sortable-head {
+  padding: 0;
+  transition: background-color .15s ease, color .15s ease;
+}
+.data-table thead th.sortable-head:hover {
+  background: #eaf1fb;
+  color: #344054;
+}
+.data-table thead th.sortable-head.sort-active {
+  background: #e8f2ff;
+  color: #175cd3;
+}
+.sort-header-button {
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 9px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 800;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.sort-header-button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: -3px;
+  border-radius: 4px;
+}
+.sort-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  min-width: 13px;
+  color: #98a2b3;
+  font-size: 10px;
+  line-height: 1;
+}
+.sort-active .sort-indicator {
+  color: #175cd3;
+}

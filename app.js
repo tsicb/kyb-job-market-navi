@@ -8,7 +8,12 @@
     expandLevel: CONFIG.defaultExpandLevel || 2,
     related: [],
     data: {},
-    idx: {}
+    idx: {},
+    sort: {
+      summary: { key: null, direction: null },
+      prefecture: { key: null, direction: null },
+      conditions: { key: null, direction: null }
+    }
   };
 
   const $ = (id) => document.getElementById(id);
@@ -170,6 +175,65 @@
     const n = numberOrNull(v);
     if (n === null || n === neutral) return "neutral";
     return n > neutral ? "positive" : "negative";
+  }
+
+  function resetSort(tableName) {
+    if (!state.sort[tableName]) return;
+    state.sort[tableName] = { key: null, direction: null };
+  }
+
+  function resetAllSorts() {
+    resetSort("summary");
+    resetSort("prefecture");
+    resetSort("conditions");
+  }
+
+  function cycleSort(tableName, key) {
+    const current = state.sort[tableName] || { key: null, direction: null };
+    if (current.key !== key || !current.direction) {
+      state.sort[tableName] = { key, direction: "desc" };
+    } else if (current.direction === "desc") {
+      state.sort[tableName] = { key, direction: "asc" };
+    } else {
+      state.sort[tableName] = { key: null, direction: null };
+    }
+  }
+
+  function ensureSortKeyVisible(tableName, visibleKeys) {
+    const current = state.sort[tableName];
+    if (current?.key && !visibleKeys.includes(current.key)) resetSort(tableName);
+  }
+
+  function sortRowsNumeric(rows, tableName, valueGetter) {
+    const current = state.sort[tableName];
+    if (!current?.key || !current.direction) return rows.slice();
+    return rows
+      .map((row, index) => ({ row, index, value: numberOrNull(valueGetter(row, current.key)) }))
+      .sort((a, b) => {
+        const aMissing = a.value === null;
+        const bMissing = b.value === null;
+        if (aMissing && bMissing) return a.index - b.index;
+        if (aMissing) return 1;
+        if (bMissing) return -1;
+        if (a.value !== b.value) {
+          return current.direction === "desc" ? b.value - a.value : a.value - b.value;
+        }
+        return a.index - b.index;
+      })
+      .map(x => x.row);
+  }
+
+  function sortableHeader(tableName, key, label) {
+    const current = state.sort[tableName];
+    const active = current?.key === key && !!current.direction;
+    const icon = !active ? "↕" : current.direction === "desc" ? "▼" : "▲";
+    const ariaSort = !active ? "none" : current.direction === "desc" ? "descending" : "ascending";
+    const next = !active ? "高い順" : current.direction === "desc" ? "低い順" : "デフォルト順";
+    return `<th class="sortable-head${active ? " sort-active" : ""}" aria-sort="${ariaSort}">
+      <button type="button" class="sort-header-button" data-sort-table="${tableName}" data-sort-key="${escapeHtml(key)}" aria-label="${escapeHtml(label)}を${next}に並べ替え" title="クリック：${next}">
+        <span>${escapeHtml(label)}</span><span class="sort-indicator" aria-hidden="true">${icon}</span>
+      </button>
+    </th>`;
   }
 
   function parseCSV(text) {
@@ -664,6 +728,22 @@
     els.monthlyJobLimit.addEventListener("change", renderMonthly);
     els.conditionJobSelect.addEventListener("change", renderConditions);
     els.conditionEmployment.addEventListener("change", renderConditions);
+
+    const sortRenderers = {
+      summary: renderSummary,
+      prefecture: renderPrefecture,
+      conditions: renderConditions
+    };
+    [els.summaryTable, els.prefTable, els.conditionTable].forEach(table => {
+      table.addEventListener("click", e => {
+        const button = e.target.closest("button[data-sort-table][data-sort-key]");
+        if (!button) return;
+        const tableName = button.dataset.sortTable;
+        const key = button.dataset.sortKey;
+        cycleSort(tableName, key);
+        sortRenderers[tableName]?.();
+      });
+    });
   }
 
   function searchCandidates(rawQuery) {
@@ -757,6 +837,7 @@
   function selectJob(jobId) {
     if (!state.idx.classById.has(jobId)) return;
     state.selectedJobId = jobId;
+    resetAllSorts();
     const c = state.idx.classById.get(jobId);
     els.keywordInput.value = c.job_name;
     els.suggestions.hidden = true;
@@ -880,12 +961,28 @@
         <th colspan="6">給与中央値</th><th colspan="6">現在求人数</th>
       </tr>
       <tr>
-        <th>正社員</th><th>本人差</th><th>パート</th><th>本人差</th><th>派遣</th><th>本人差</th>
-        <th>正社員</th><th>本人比</th><th>パート</th><th>本人比</th><th>派遣</th><th>本人比</th>
+        ${sortableHeader("summary", "regular_salary_median_10k_yen", "正社員")}
+        <th>本人差</th>
+        ${sortableHeader("summary", "parttime_salary_median_yen_hour", "パート")}
+        <th>本人差</th>
+        ${sortableHeader("summary", "temp_salary_median_yen_hour", "派遣")}
+        <th>本人差</th>
+        ${sortableHeader("summary", "regular_jobs_current", "正社員")}
+        <th>本人比</th>
+        ${sortableHeader("summary", "parttime_jobs_current", "パート")}
+        <th>本人比</th>
+        ${sortableHeader("summary", "temp_jobs_current", "派遣")}
+        <th>本人比</th>
       </tr>
     </thead>`;
 
-    const body = state.related.map(r => {
+    const rows = sortRowsNumeric(
+      state.related,
+      "summary",
+      (r, key) => summaryValues(r.job_id)[key]
+    );
+
+    const body = rows.map(r => {
       const d = summaryValues(r.job_id);
       const rd = salaryDiff(r.job_id, "regular");
       const pd = salaryDiff(r.job_id, "parttime");
@@ -921,7 +1018,6 @@
     const selectedJobId = els.prefJobSelect.value || state.selectedJobId;
     const selectedJob = state.idx.classById.get(selectedJobId);
 
-    // 両モードとも2つの軸を常に見せる。役割だけを切り替える。
     els.prefectureControl.hidden = false;
     els.prefJobControl.hidden = false;
 
@@ -939,16 +1035,22 @@
           { emp: "parttime", label: "パート 時給（円）" },
           { emp: "temp", label: "派遣 時給（円）" }
         ]
-      : [{ emp, label: `${EMP[emp].label}給与` }];
+      : [{ emp, label: emp === "regular" ? "正社員 年収（万円）" : `${EMP[emp].label} 時給（円）` }];
 
-    const salaryHead = salaryColumns.map(c => `<th>${c.label}</th>`).join("");
+    ensureSortKeyVisible("prefecture", salaryColumns.map(c => c.emp));
+    const salaryHead = salaryColumns.map(c => sortableHeader("prefecture", c.emp, c.label)).join("");
 
     if (mode === "compare") {
       const pref = selectedPref;
-      const rows = state.related.map(r => ({
+      const defaultRows = state.related.map(r => ({
         ...r,
         prefRow: state.idx.prefByJob.get(r.job_id)?.get(pref)
       }));
+      const rows = sortRowsNumeric(
+        defaultRows,
+        "prefecture",
+        (r, key) => r.prefRow?.[EMP[key].prefSalary]
+      );
 
       els.prefCaption.innerHTML = `<strong>${escapeHtml(pref)}</strong>を固定して、本人職種と周辺職種の給与を比較しています。<span class="caption-sub">注目：${escapeHtml(selectedJob?.job_name || "")}</span>`;
       els.prefTable.innerHTML = `<thead><tr>
@@ -968,6 +1070,12 @@
       const jobId = selectedJobId;
       const c = state.idx.classById.get(jobId);
       const byPref = state.idx.prefByJob.get(jobId) || new Map();
+      const defaultRows = PREFECTURES.map(pref => ({ pref, prefRow: byPref.get(pref) }));
+      const rows = sortRowsNumeric(
+        defaultRows,
+        "prefecture",
+        (r, key) => r.prefRow?.[EMP[key].prefSalary]
+      );
 
       els.prefCaption.innerHTML = `<strong>${escapeHtml(c?.job_name || "")}</strong>を固定して、47都道府県の給与を比較しています。<span class="caption-sub">注目：${escapeHtml(selectedPref)}</span>`;
       els.prefTable.innerHTML = `<thead><tr>
@@ -975,13 +1083,12 @@
           <th>都道府県</th>
           ${salaryHead}
         </tr></thead>
-        <tbody>${PREFECTURES.map(pref => {
-          const pr = byPref.get(pref);
-          const isFocus = pref === selectedPref;
+        <tbody>${rows.map(r => {
+          const isFocus = r.pref === selectedPref;
           return `<tr class="${isFocus ? "focus-row" : ""}">
             <td class="left fixed-axis-cell">${escapeHtml(c?.job_name || "")}</td>
-            <td class="left">${escapeHtml(pref)}${isFocus ? ' <span class="focus-badge">基準</span>' : ""}</td>
-            ${salaryColumns.map(col => `<td class="num">${formatSalary(pr?.[EMP[col.emp].prefSalary], col.emp)}</td>`).join("")}
+            <td class="left">${escapeHtml(r.pref)}${isFocus ? ' <span class="focus-badge">基準</span>' : ""}</td>
+            ${salaryColumns.map(col => `<td class="num">${formatSalary(r.prefRow?.[EMP[col.emp].prefSalary], col.emp)}</td>`).join("")}
           </tr>`;
         }).join("")}</tbody>`;
     }
@@ -1082,8 +1189,16 @@
     if (filterJob !== "all") rows = rows.filter(r => r.job_id === filterJob);
     rows.sort((a,b) => (order.get(a.job_id) ?? 9999) - (order.get(b.job_id) ?? 9999) || a.condition.localeCompare(b.condition, "ja"));
 
+    const visibleSortKeys = emp === "all" ? ["regular", "parttime", "temp"] : [emp];
+    ensureSortKeyVisible("conditions", visibleSortKeys);
+    rows = sortRowsNumeric(rows, "conditions", (r, key) => r[EMP[key].condition]);
+
     if (emp === "all") {
-      els.conditionTable.innerHTML = `<thead><tr><th>職種</th><th>条件</th><th>正社員年収</th><th>パート時給</th><th>派遣時給</th></tr></thead>
+      els.conditionTable.innerHTML = `<thead><tr><th>職種</th><th>条件</th>
+          ${sortableHeader("conditions", "regular", "正社員 年収（万円）")}
+          ${sortableHeader("conditions", "parttime", "パート 時給（円）")}
+          ${sortableHeader("conditions", "temp", "派遣 時給（円）")}
+        </tr></thead>
         <tbody>${rows.map(r => `<tr class="${r.job_id === state.selectedJobId ? "self-row" : ""}">
           <td class="left">${escapeHtml(r.job_name)}</td><td class="left">${escapeHtml(r.condition)}</td>
           <td class="num">${formatSalary(r.regular_salary_10k_yen, "regular")}</td>
@@ -1092,7 +1207,8 @@
         </tr>`).join("")}</tbody>`;
     } else {
       const meta = EMP[emp];
-      els.conditionTable.innerHTML = `<thead><tr><th>職種</th><th>条件</th><th>${meta.label}給与</th></tr></thead>
+      const label = emp === "regular" ? "正社員 年収（万円）" : `${meta.label} 時給（円）`;
+      els.conditionTable.innerHTML = `<thead><tr><th>職種</th><th>条件</th>${sortableHeader("conditions", emp, label)}</tr></thead>
         <tbody>${rows.map(r => `<tr class="${r.job_id === state.selectedJobId ? "self-row" : ""}">
           <td class="left">${escapeHtml(r.job_name)}</td><td class="left">${escapeHtml(r.condition)}</td>
           <td class="num">${formatSalary(r[meta.condition], emp)}</td>
