@@ -1,0 +1,4826 @@
+[
+  {
+    "job_id": "JOB0001",
+    "job_name": "ITアーキテクト",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITコンサル・PM",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0002",
+    "job_name": "ITエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0003",
+    "job_name": "ITコンサルタント",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITコンサル・PM",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0004",
+    "job_name": "IT事務",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITサポート・運用",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0005",
+    "job_name": "ITスペシャリスト",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITサポート・運用",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0006",
+    "job_name": "アイドル",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "芸能・音楽・イベント",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0007",
+    "job_name": "アイリスト",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0008",
+    "job_name": "アカウントエグゼクティブ",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0009",
+    "job_name": "アナリスト",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "その他・要確認",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0010",
+    "job_name": "アパレル販売",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0011",
+    "job_name": "アプリエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0012",
+    "job_name": "アロマセラピスト",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0013",
+    "job_name": "アロマテラピスト",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0014",
+    "job_name": "Androidエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0015",
+    "job_name": "あん摩マッサージ指圧師",
+    "concept_type": "資格・専門職",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0016",
+    "job_name": "アーティスト",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "芸能・音楽・イベント",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0017",
+    "job_name": "アートディレクター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0018",
+    "job_name": "RPA",
+    "concept_type": "技術・専門領域",
+    "major_category": "IT・デジタル",
+    "middle_category": "ERP・業務システム",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0019",
+    "job_name": "居酒屋",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0020",
+    "job_name": "意匠設計",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0021",
+    "job_name": "板前",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0022",
+    "job_name": "一級建築士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0023",
+    "job_name": "一般事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "一般・OA事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0024",
+    "job_name": "イベントスタッフ",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "芸能・音楽・イベント",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0025",
+    "job_name": "イラストレーター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0026",
+    "job_name": "医療機器開発",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "医療・健康専門",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0027",
+    "job_name": "医療事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0028",
+    "job_name": "医療ソーシャルワーカー",
+    "concept_type": "職種・職能",
+    "major_category": "介護・福祉",
+    "middle_category": "相談・支援",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0029",
+    "job_name": "医療秘書",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0030",
+    "job_name": "印刷オペレーター",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0031",
+    "job_name": "インストラクター",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "教育支援・施設",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0032",
+    "job_name": "インターナショナルスクール",
+    "concept_type": "職場・業態",
+    "major_category": "保育・教育",
+    "middle_category": "塾・語学・講師",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0033",
+    "job_name": "インテリアコーディネーター",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0034",
+    "job_name": "インテリアデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0035",
+    "job_name": "インフラエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "インフラ・クラウド",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0036",
+    "job_name": "ウェディングプランナー",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "宿泊・観光・ブライダル",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0037",
+    "job_name": "Webエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0038",
+    "job_name": "Webディレクター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "Web制作",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0039",
+    "job_name": "Webデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "Web制作",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0040",
+    "job_name": "Webプログラマー",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0041",
+    "job_name": "Webプロデューサー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "Web制作",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0042",
+    "job_name": "受付",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "受付・秘書",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0043",
+    "job_name": "うどん屋",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0044",
+    "job_name": "運行管理者",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "物流・運行管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0045",
+    "job_name": "運転手",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0046",
+    "job_name": "運転代行",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0047",
+    "job_name": "英会話講師",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "塾・語学・講師",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0048",
+    "job_name": "映画館関連",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0049",
+    "job_name": "営業",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0050",
+    "job_name": "営業アシスタント",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業支援・販売促進",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0051",
+    "job_name": "営業事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "営業事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0052",
+    "job_name": "英語講師",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "塾・語学・講師",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0053",
+    "job_name": "映像制作",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "映像・放送・写真",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0054",
+    "job_name": "映像ディレクター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "映像・放送・写真",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0055",
+    "job_name": "映像編集",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "映像・放送・写真",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0056",
+    "job_name": "英文経理関連",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "経理・会計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0057",
+    "job_name": "栄養士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "医療・健康専門",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0058",
+    "job_name": "エクステリア",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0059",
+    "job_name": "SAP",
+    "concept_type": "技術・専門領域",
+    "major_category": "IT・デジタル",
+    "middle_category": "ERP・業務システム",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0060",
+    "job_name": "SCM",
+    "concept_type": "技術・専門領域",
+    "major_category": "物流・運輸",
+    "middle_category": "物流・運行管理",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0061",
+    "job_name": "ST関連",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "リハビリ",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0062",
+    "job_name": "エステティシャン",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0063",
+    "job_name": "エフェクトデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "ゲーム・CG",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0064",
+    "job_name": "MR",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0065",
+    "job_name": "園長",
+    "concept_type": "役職・ポジション",
+    "major_category": "保育・教育",
+    "middle_category": "保育・児童",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0066",
+    "job_name": "AIエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "データ・AI",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0067",
+    "job_name": "AD関連",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "映像・放送・写真",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0068",
+    "job_name": "大型トラック",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0069",
+    "job_name": "音響",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "芸能・音楽・イベント",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0070",
+    "job_name": "OA事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "一般・OA事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0071",
+    "job_name": "OT",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "リハビリ",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0072",
+    "job_name": "海外営業",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0073",
+    "job_name": "会計士",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "会計・税務士業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0074",
+    "job_name": "会計事務所",
+    "concept_type": "職場・業態",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "会計・税務士業",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0075",
+    "job_name": "介護士",
+    "concept_type": "職種・職能",
+    "major_category": "介護・福祉",
+    "middle_category": "介護職・介護サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0076",
+    "job_name": "介護事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0077",
+    "job_name": "介護ドライバー",
+    "concept_type": "職種・職能",
+    "major_category": "介護・福祉",
+    "middle_category": "介護周辺職",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0078",
+    "job_name": "介護福祉士",
+    "concept_type": "資格・専門職",
+    "major_category": "介護・福祉",
+    "middle_category": "介護職・介護サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0079",
+    "job_name": "解体",
+    "concept_type": "作業・業務",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0080",
+    "job_name": "回路設計",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "機械・電気設計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0081",
+    "job_name": "カイロプラクター",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0082",
+    "job_name": "カウンセラー",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "その他・要確認",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0083",
+    "job_name": "カウンターセールス",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業支援・販売促進",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0084",
+    "job_name": "カウンターレディ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0085",
+    "job_name": "家事代行",
+    "concept_type": "作業・業務",
+    "major_category": "その他・サービス",
+    "middle_category": "清掃・家事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0086",
+    "job_name": "カスタマーエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITサポート・運用",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0087",
+    "job_name": "カスタマーサポート",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "顧客対応・コールセンター",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0088",
+    "job_name": "家政婦関連",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "清掃・家事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0089",
+    "job_name": "型枠大工",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0090",
+    "job_name": "家庭教師",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "塾・語学・講師",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0091",
+    "job_name": "家電修理",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "保守・整備・サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0092",
+    "job_name": "家電配送",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "配送・宅配",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0093",
+    "job_name": "家電量販店",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0094",
+    "job_name": "金型設計",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "機械・電気設計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0095",
+    "job_name": "カフェ関連",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0096",
+    "job_name": "カメラマン",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "映像・放送・写真",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0097",
+    "job_name": "カラオケ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0098",
+    "job_name": "カラーリスト",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0099",
+    "job_name": "環境計量士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "建築・土木・設備",
+    "middle_category": "土木・測量・調査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0100",
+    "job_name": "環境コンサルタント関連",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "コンサルティング",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0101",
+    "job_name": "環境分析",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "生産・品質・研究開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0102",
+    "job_name": "管工事施工管理技士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "建築・土木・設備",
+    "middle_category": "施工管理・現場管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0103",
+    "job_name": "看護師",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "看護・助産・保健",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0104",
+    "job_name": "看護助手",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "看護・助産・保健",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0105",
+    "job_name": "看護補助",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "看護・助産・保健",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0106",
+    "job_name": "管理栄養士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "医療・健康専門",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0107",
+    "job_name": "監理技術者",
+    "concept_type": "資格・専門職",
+    "major_category": "建築・土木・設備",
+    "middle_category": "施工管理・現場管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0108",
+    "job_name": "カーコーティング",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "保守・整備・サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0109",
+    "job_name": "カーディーラー",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0110",
+    "job_name": "害虫駆除",
+    "concept_type": "作業・業務",
+    "major_category": "その他・サービス",
+    "middle_category": "生活サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0111",
+    "job_name": "学童",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "保育・児童",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0112",
+    "job_name": "学童保育",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "保育・児童",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0113",
+    "job_name": "学童保育指導員",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "保育・児童",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0114",
+    "job_name": "ガソリンスタンド",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0115",
+    "job_name": "学校事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0116",
+    "job_name": "ガールズバー",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0117",
+    "job_name": "機械エンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "機械・電気設計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0118",
+    "job_name": "機械加工関連",
+    "concept_type": "作業・業務",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0119",
+    "job_name": "機械組立工",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0120",
+    "job_name": "機械設計",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "機械・電気設計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0121",
+    "job_name": "企画営業",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0122",
+    "job_name": "記者",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "出版・編集・ライティング",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0123",
+    "job_name": "喫茶店",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0124",
+    "job_name": "キッチンスタッフ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0125",
+    "job_name": "機能訓練指導員",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "リハビリ",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0126",
+    "job_name": "キャディ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0127",
+    "job_name": "CADオペレーター",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0128",
+    "job_name": "キャバクラ関連",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0129",
+    "job_name": "キャラクターデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0130",
+    "job_name": "給食センター",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0131",
+    "job_name": "給食調理",
+    "concept_type": "作業・業務",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0132",
+    "job_name": "教習指導員",
+    "concept_type": "資格・専門職",
+    "major_category": "保育・教育",
+    "middle_category": "教育支援・施設",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0133",
+    "job_name": "教授関連",
+    "concept_type": "資格・専門職",
+    "major_category": "保育・教育",
+    "middle_category": "学校教育",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0134",
+    "job_name": "橋梁点検関連",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "土木・測量・調査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0135",
+    "job_name": "金属加工",
+    "concept_type": "作業・業務",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0136",
+    "job_name": "技術士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "建築・土木・設備",
+    "middle_category": "技術資格・コンサル",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0137",
+    "job_name": "行政書士",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "法律・労務士業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0138",
+    "job_name": "銀行事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0139",
+    "job_name": "銀行窓口",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0140",
+    "job_name": "空間デザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0141",
+    "job_name": "空間デザイン",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0142",
+    "job_name": "空調工事",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "設備・電気工事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0143",
+    "job_name": "草刈り",
+    "concept_type": "作業・業務",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0144",
+    "job_name": "靴修理",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "生活サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0145",
+    "job_name": "クラウドエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "インフラ・クラウド",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0146",
+    "job_name": "クリエイティブディレクター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0147",
+    "job_name": "クレーン運転士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0148",
+    "job_name": "グラフィックデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0149",
+    "job_name": "グランドスタッフ",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "物流・運行管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0150",
+    "job_name": "ケアマネージャー",
+    "concept_type": "職種・職能",
+    "major_category": "介護・福祉",
+    "middle_category": "ケアマネ・福祉用具",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0151",
+    "job_name": "ケアワーカー",
+    "concept_type": "職種・職能",
+    "major_category": "介護・福祉",
+    "middle_category": "介護職・介護サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0152",
+    "job_name": "経営企画",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "企画・商品開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0153",
+    "job_name": "経営コンサルタント",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "コンサルティング",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0154",
+    "job_name": "軽作業",
+    "concept_type": "作業・業務",
+    "major_category": "物流・運輸",
+    "middle_category": "倉庫・荷役",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0155",
+    "job_name": "携帯ショップ",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0156",
+    "job_name": "携帯販売",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0157",
+    "job_name": "警備員",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "警備",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0158",
+    "job_name": "経理",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "経理・会計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0159",
+    "job_name": "経理事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "経理・会計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0160",
+    "job_name": "計量士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "製造・工場",
+    "middle_category": "品質・計測",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0161",
+    "job_name": "化粧品販売",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0162",
+    "job_name": "研究開発",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "生産・品質・研究開発",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0163",
+    "job_name": "研究者関連",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "生産・品質・研究開発",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0164",
+    "job_name": "健康運動指導士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "スポーツ・フィットネス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0165",
+    "job_name": "建設コンサルタント",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "施工管理・現場管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0166",
+    "job_name": "建設作業員",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0167",
+    "job_name": "建築デザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0168",
+    "job_name": "ケーキ屋",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0169",
+    "job_name": "言語聴覚士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "リハビリ",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0170",
+    "job_name": "現場監督",
+    "concept_type": "役職・ポジション",
+    "major_category": "建築・土木・設備",
+    "middle_category": "施工管理・現場管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0171",
+    "job_name": "現場代理人",
+    "concept_type": "役職・ポジション",
+    "major_category": "建築・土木・設備",
+    "middle_category": "施工管理・現場管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0172",
+    "job_name": "ゲームクリエイター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "ゲーム・CG",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0173",
+    "job_name": "ゲームクリエーター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "ゲーム・CG",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0174",
+    "job_name": "ゲームセンター",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0175",
+    "job_name": "ゲームディレクター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "ゲーム・CG",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0176",
+    "job_name": "ゲームデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "ゲーム・CG",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0177",
+    "job_name": "ゲームプランナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "ゲーム・CG",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0178",
+    "job_name": "ゲームプログラマー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "ゲーム・CG",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0179",
+    "job_name": "ゲームプロデューサー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "ゲーム・CG",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0180",
+    "job_name": "校閲",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "出版・編集・ライティング",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0181",
+    "job_name": "光学設計",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "機械・電気設計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0182",
+    "job_name": "高校教員",
+    "concept_type": "資格・専門職",
+    "major_category": "保育・教育",
+    "middle_category": "学校教育",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0183",
+    "job_name": "広告営業",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0184",
+    "job_name": "広告デザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0185",
+    "job_name": "広告プランナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0186",
+    "job_name": "交通誘導",
+    "concept_type": "作業・業務",
+    "major_category": "その他・サービス",
+    "middle_category": "警備",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0187",
+    "job_name": "公認会計士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "会計・税務士業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0188",
+    "job_name": "広報",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "マーケティング・広報",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0189",
+    "job_name": "港湾荷役",
+    "concept_type": "作業・業務",
+    "major_category": "物流・運輸",
+    "middle_category": "倉庫・荷役",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0190",
+    "job_name": "コピーライター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "出版・編集・ライティング",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0191",
+    "job_name": "個別指導塾",
+    "concept_type": "職場・業態",
+    "major_category": "保育・教育",
+    "middle_category": "塾・語学・講師",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0192",
+    "job_name": "コンサルタント",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "コンサルティング",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0193",
+    "job_name": "コンサートスタッフ",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "芸能・音楽・イベント",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0194",
+    "job_name": "コンシェルジュ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "宿泊・観光・ブライダル",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0195",
+    "job_name": "コンビニ関連",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0196",
+    "job_name": "コーディネーター",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "その他・要確認",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0197",
+    "job_name": "コールセンター",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "顧客対応・コールセンター",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0198",
+    "job_name": "コールセンターSV",
+    "concept_type": "役職・ポジション",
+    "major_category": "事務・管理",
+    "middle_category": "顧客対応・コールセンター",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0199",
+    "job_name": "ごみ収集",
+    "concept_type": "作業・業務",
+    "major_category": "その他・サービス",
+    "middle_category": "生活サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0200",
+    "job_name": "ゴルフ場",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0201",
+    "job_name": "採点",
+    "concept_type": "作業・業務",
+    "major_category": "保育・教育",
+    "middle_category": "教育支援・施設",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0202",
+    "job_name": "酒蔵関連",
+    "concept_type": "職場・業態",
+    "major_category": "製造・工場",
+    "middle_category": "食品・飲料製造",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0203",
+    "job_name": "酒屋関連",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0204",
+    "job_name": "左官関連",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0205",
+    "job_name": "作業療法士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "リハビリ",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0206",
+    "job_name": "皿洗い",
+    "concept_type": "作業・業務",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0207",
+    "job_name": "サービスエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "保守・整備・サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0208",
+    "job_name": "雑貨屋関連",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0209",
+    "job_name": "雑誌編集",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "出版・編集・ライティング",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0210",
+    "job_name": "飼育員",
+    "concept_type": "職種・職能",
+    "major_category": "農林水産・動物",
+    "middle_category": "動物",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0211",
+    "job_name": "シェフ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0212",
+    "job_name": "歯科医師",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "歯科",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0213",
+    "job_name": "歯科受付",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "歯科",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0214",
+    "job_name": "歯科衛生士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "歯科",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0215",
+    "job_name": "歯科技工士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "歯科",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0216",
+    "job_name": "歯科助手",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "歯科",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0217",
+    "job_name": "システムエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0218",
+    "job_name": "システムコンサルタント",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITコンサル・PM",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0219",
+    "job_name": "施設警備",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "警備",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0220",
+    "job_name": "視能訓練士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "医療技師・検査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0221",
+    "job_name": "司法書士",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "法律・労務士業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0222",
+    "job_name": "社会福祉士",
+    "concept_type": "資格・専門職",
+    "major_category": "介護・福祉",
+    "middle_category": "相談・支援",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0223",
+    "job_name": "社会保険労務士",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "法律・労務士業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0224",
+    "job_name": "社長秘書",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "受付・秘書",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0225",
+    "job_name": "社内SE",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITサポート・運用",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0226",
+    "job_name": "社労士",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "法律・労務士業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0227",
+    "job_name": "小学校教諭関連",
+    "concept_type": "資格・専門職",
+    "major_category": "保育・教育",
+    "middle_category": "学校教育",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0228",
+    "job_name": "商品開発関連",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "企画・商品開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0229",
+    "job_name": "商品企画",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "企画・商品開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0230",
+    "job_name": "職人",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0231",
+    "job_name": "食品工場",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0232",
+    "job_name": "食品製造関連",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0233",
+    "job_name": "ショップ店員",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0234",
+    "job_name": "書店",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0235",
+    "job_name": "シロアリ駆除関連",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "生活サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0236",
+    "job_name": "鍼灸師",
+    "concept_type": "資格・専門職",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0237",
+    "job_name": "新聞配達",
+    "concept_type": "作業・業務",
+    "major_category": "物流・運輸",
+    "middle_category": "配送・宅配",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0238",
+    "job_name": "心理士",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "医療・健康専門",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0239",
+    "job_name": "診療情報管理士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "医療技師・検査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0240",
+    "job_name": "診療放射線技師",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "医療技師・検査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0241",
+    "job_name": "CRA",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "薬剤・臨床開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0242",
+    "job_name": "CRC",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "薬剤・臨床開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0243",
+    "job_name": "CAE解析",
+    "concept_type": "技術・専門領域",
+    "major_category": "製造・工場",
+    "middle_category": "機械・電気設計",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0244",
+    "job_name": "シール貼り",
+    "concept_type": "作業・業務",
+    "major_category": "物流・運輸",
+    "middle_category": "倉庫・荷役",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0245",
+    "job_name": "実演販売",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0246",
+    "job_name": "児童館",
+    "concept_type": "職場・業態",
+    "major_category": "保育・教育",
+    "middle_category": "保育・児童",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0247",
+    "job_name": "児童指導員",
+    "concept_type": "職種・職能",
+    "major_category": "介護・福祉",
+    "middle_category": "相談・支援",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0248",
+    "job_name": "自動車開発",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "生産・品質・研究開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0249",
+    "job_name": "自動車検査員",
+    "concept_type": "資格・専門職",
+    "major_category": "製造・工場",
+    "middle_category": "保守・整備・サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0250",
+    "job_name": "自動車整備士",
+    "concept_type": "資格・専門職",
+    "major_category": "製造・工場",
+    "middle_category": "保守・整備・サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0251",
+    "job_name": "地盤改良",
+    "concept_type": "作業・業務",
+    "major_category": "建築・土木・設備",
+    "middle_category": "土木・測量・調査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0252",
+    "job_name": "地盤調査",
+    "concept_type": "作業・業務",
+    "major_category": "建築・土木・設備",
+    "middle_category": "土木・測量・調査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0253",
+    "job_name": "ジムインストラクター",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "スポーツ・フィットネス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0254",
+    "job_name": "Javaエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0255",
+    "job_name": "獣医師",
+    "concept_type": "資格・専門職",
+    "major_category": "農林水産・動物",
+    "middle_category": "動物",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0256",
+    "job_name": "重機",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0257",
+    "job_name": "重機オペレーター",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0258",
+    "job_name": "住宅営業",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0259",
+    "job_name": "柔道整復師",
+    "concept_type": "資格・専門職",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0260",
+    "job_name": "ジュエリー販売",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0261",
+    "job_name": "塾講師",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "塾・語学・講師",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0262",
+    "job_name": "准看護師",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "看護・助産・保健",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0263",
+    "job_name": "浄化槽管理士",
+    "concept_type": "資格・専門職",
+    "major_category": "建築・土木・設備",
+    "middle_category": "設備・電気工事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0264",
+    "job_name": "助産師",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "看護・助産・保健",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0265",
+    "job_name": "人材コーディネーター",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業支援・販売促進",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0266",
+    "job_name": "人事コンサルタント",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "コンサルティング",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0267",
+    "job_name": "水道工事関連",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "設備・電気工事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0268",
+    "job_name": "寿司職人",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0269",
+    "job_name": "寿司屋",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0270",
+    "job_name": "スタイリスト",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0271",
+    "job_name": "スナック",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0272",
+    "job_name": "スパニスト",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0273",
+    "job_name": "スポーツインストラクター",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "スポーツ・フィットネス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0274",
+    "job_name": "スポーツトレーナー",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "スポーツ・フィットネス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0275",
+    "job_name": "スーパーバイザー",
+    "concept_type": "役職・ポジション",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "運営・SV",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0276",
+    "job_name": "生活支援員",
+    "concept_type": "職種・職能",
+    "major_category": "介護・福祉",
+    "middle_category": "相談・支援",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0277",
+    "job_name": "生活相談員",
+    "concept_type": "職種・職能",
+    "major_category": "介護・福祉",
+    "middle_category": "相談・支援",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0278",
+    "job_name": "製缶",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0279",
+    "job_name": "制御設計",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "機械・電気設計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0280",
+    "job_name": "整形外科",
+    "concept_type": "職場・業態",
+    "major_category": "医療",
+    "middle_category": "医療施設・診療領域",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0281",
+    "job_name": "整骨院",
+    "concept_type": "職場・業態",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0282",
+    "job_name": "生産管理",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "生産・品質・研究開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0283",
+    "job_name": "生産技術",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "生産・品質・研究開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0284",
+    "job_name": "精神科",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "医療施設・診療領域",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0285",
+    "job_name": "精神保健福祉士",
+    "concept_type": "資格・専門職",
+    "major_category": "介護・福祉",
+    "middle_category": "相談・支援",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0286",
+    "job_name": "清掃スタッフ",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "清掃・家事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0287",
+    "job_name": "整体院",
+    "concept_type": "職場・業態",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0288",
+    "job_name": "整体師",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0289",
+    "job_name": "精肉店",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0290",
+    "job_name": "整備士",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "保守・整備・サービス",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0291",
+    "job_name": "セキュリティエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "セキュリティ",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0292",
+    "job_name": "施工管理",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "施工管理・現場管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0293",
+    "job_name": "石工関連",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0294",
+    "job_name": "接骨院",
+    "concept_type": "職場・業態",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0295",
+    "job_name": "設備工事",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "設備・電気工事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0296",
+    "job_name": "設備設計",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "設備・電気工事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0297",
+    "job_name": "設備保全",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "保守・整備・サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0298",
+    "job_name": "セラピスト",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0299",
+    "job_name": "旋盤",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0300",
+    "job_name": "戦略コンサルタント",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "コンサルティング",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0301",
+    "job_name": "セールスエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業支援・販売促進",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0302",
+    "job_name": "セールスドライバー",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0303",
+    "job_name": "税理士",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "会計・税務士業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0304",
+    "job_name": "倉庫管理",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "倉庫・荷役",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0305",
+    "job_name": "倉庫作業",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "倉庫・荷役",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0306",
+    "job_name": "倉庫内作業",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "倉庫・荷役",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0307",
+    "job_name": "総務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "管理・法務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0308",
+    "job_name": "測量",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "土木・測量・調査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0309",
+    "job_name": "蕎麦屋",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0310",
+    "job_name": "ソフトウェアエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0311",
+    "job_name": "ソフトウェア開発",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0312",
+    "job_name": "ソムリエ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0313",
+    "job_name": "損保事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0314",
+    "job_name": "造園",
+    "concept_type": "作業・業務",
+    "major_category": "建築・土木・設備",
+    "middle_category": "土木・測量・調査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0315",
+    "job_name": "造船",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0316",
+    "job_name": "タクシー運転手",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0317",
+    "job_name": "タクシードライバー",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0318",
+    "job_name": "宅配",
+    "concept_type": "作業・業務",
+    "major_category": "物流・運輸",
+    "middle_category": "配送・宅配",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0319",
+    "job_name": "たこ焼き屋",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0320",
+    "job_name": "探偵",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "生活サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0321",
+    "job_name": "大学講師関連",
+    "concept_type": "資格・専門職",
+    "major_category": "保育・教育",
+    "middle_category": "学校教育",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0322",
+    "job_name": "大学事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0323",
+    "job_name": "大学病院",
+    "concept_type": "職場・業態",
+    "major_category": "医療",
+    "middle_category": "医療施設・診療領域",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0324",
+    "job_name": "大工関連",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0325",
+    "job_name": "ダイビング関連",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "スポーツ・フィットネス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0326",
+    "job_name": "脱毛サロン",
+    "concept_type": "職場・業態",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0327",
+    "job_name": "ダンプ運転手",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0328",
+    "job_name": "治験コーディネーター",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "薬剤・臨床開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0329",
+    "job_name": "知財",
+    "concept_type": "技術・専門領域",
+    "major_category": "事務・管理",
+    "middle_category": "管理・法務",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0330",
+    "job_name": "地質調査",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "土木・測量・調査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0331",
+    "job_name": "知的財産",
+    "concept_type": "技術・専門領域",
+    "major_category": "事務・管理",
+    "middle_category": "管理・法務",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0332",
+    "job_name": "調剤薬局",
+    "concept_type": "職場・業態",
+    "major_category": "医療",
+    "middle_category": "医療施設・薬局",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0333",
+    "job_name": "調剤薬局事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0334",
+    "job_name": "調理師",
+    "concept_type": "資格・専門職",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0335",
+    "job_name": "調理スタッフ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0336",
+    "job_name": "調理補助",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0337",
+    "job_name": "チラシ配り",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "生活サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0338",
+    "job_name": "通関士",
+    "concept_type": "資格・専門職",
+    "major_category": "物流・運輸",
+    "middle_category": "貿易・国際物流",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0339",
+    "job_name": "通信工事",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "設備・電気工事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0340",
+    "job_name": "通訳",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0341",
+    "job_name": "2Dデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "ゲーム・CG",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0342",
+    "job_name": "テクニカルサポート",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITサポート・運用",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0343",
+    "job_name": "テレフォンオペレーター",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "顧客対応・コールセンター",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0344",
+    "job_name": "添乗員",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "宿泊・観光・ブライダル",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0345",
+    "job_name": "店舗デザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0346",
+    "job_name": "ディレクター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "芸能・音楽・イベント",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0347",
+    "job_name": "DTPオペレーター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0348",
+    "job_name": "DTPデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0349",
+    "job_name": "ディーラー",
+    "concept_type": "職種・職能",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "金融・保険",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0350",
+    "job_name": "デジタルマーケティング",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "マーケティング・広報",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0351",
+    "job_name": "デパート関連",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0352",
+    "job_name": "デベロッパー",
+    "concept_type": "職種・職能",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "不動産",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0353",
+    "job_name": "デリバリー",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "配送・宅配",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0354",
+    "job_name": "電気工事士",
+    "concept_type": "資格・専門職",
+    "major_category": "建築・土木・設備",
+    "middle_category": "設備・電気工事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0355",
+    "job_name": "電気工事施工管理技士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "建築・土木・設備",
+    "middle_category": "施工管理・現場管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0356",
+    "job_name": "電気設計",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "機械・電気設計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0357",
+    "job_name": "データアナリスト",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "データ・AI",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0358",
+    "job_name": "データサイエンティスト",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "データ・AI",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0359",
+    "job_name": "データ入力",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "一般・OA事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0360",
+    "job_name": "データベースエンジニア関連",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "インフラ・クラウド",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0361",
+    "job_name": "データマネジメント",
+    "concept_type": "技術・専門領域",
+    "major_category": "医療",
+    "middle_category": "薬剤・臨床開発",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0362",
+    "job_name": "統計解析関連",
+    "concept_type": "技術・専門領域",
+    "major_category": "医療",
+    "middle_category": "薬剤・臨床開発",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0363",
+    "job_name": "透析看護",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "看護・助産・保健",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0364",
+    "job_name": "登録販売者",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "薬剤・臨床開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0365",
+    "job_name": "登録ヘルパー",
+    "concept_type": "職種・職能",
+    "major_category": "介護・福祉",
+    "middle_category": "介護職・介護サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0366",
+    "job_name": "図書館",
+    "concept_type": "職場・業態",
+    "major_category": "保育・教育",
+    "middle_category": "教育支援・施設",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0367",
+    "job_name": "塗装",
+    "concept_type": "作業・業務",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0368",
+    "job_name": "土地家屋調査士",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "不動産",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0369",
+    "job_name": "特許事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0370",
+    "job_name": "特許事務所",
+    "concept_type": "職場・業態",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "法律・労務士業",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0371",
+    "job_name": "とび職関連",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0372",
+    "job_name": "トラック運転",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0373",
+    "job_name": "トリマー",
+    "concept_type": "職種・職能",
+    "major_category": "農林水産・動物",
+    "middle_category": "動物",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0374",
+    "job_name": "トレーラー",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0375",
+    "job_name": "トンネル工事関連",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "土木・測量・調査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0376",
+    "job_name": "動画編集",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "映像・放送・写真",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0377",
+    "job_name": "動物看護",
+    "concept_type": "職種・職能",
+    "major_category": "農林水産・動物",
+    "middle_category": "動物",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0378",
+    "job_name": "土木作業員",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "土木・測量・調査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0379",
+    "job_name": "土木施工管理",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "施工管理・現場管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0380",
+    "job_name": "ドラッグストア",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0381",
+    "job_name": "ドレスコーディネーター",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "宿泊・観光・ブライダル",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0382",
+    "job_name": "内装工",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "職人・現場作業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0383",
+    "job_name": "内装設計",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "建築設計・デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0384",
+    "job_name": "ナイトワーク",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0385",
+    "job_name": "内部監査",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "管理・法務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0386",
+    "job_name": "ネイリスト",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0387",
+    "job_name": "ネットカフェ関連",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0388",
+    "job_name": "配管工",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "設備・電気工事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0389",
+    "job_name": "配送",
+    "concept_type": "作業・業務",
+    "major_category": "物流・運輸",
+    "middle_category": "配送・宅配",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0390",
+    "job_name": "ハウスキーパー関連",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "清掃・家事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0391",
+    "job_name": "ハウスクリーニング関連",
+    "concept_type": "作業・業務",
+    "major_category": "その他・サービス",
+    "middle_category": "清掃・家事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0392",
+    "job_name": "花屋関連",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0393",
+    "job_name": "半導体設計",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "機械・電気設計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0394",
+    "job_name": "販売スタッフ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0395",
+    "job_name": "バイク便関連",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "配送・宅配",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0396",
+    "job_name": "バイヤー",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "企画・商品開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0397",
+    "job_name": "バス運転手",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0398",
+    "job_name": "バリスタ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0399",
+    "job_name": "板金塗装",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0400",
+    "job_name": "番組ディレクター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "映像・放送・写真",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0401",
+    "job_name": "バーテンダー",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0402",
+    "job_name": "パソコンインストラクター",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "塾・語学・講師",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0403",
+    "job_name": "パタンナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0404",
+    "job_name": "パチンコ",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0405",
+    "job_name": "パチンコ店",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0406",
+    "job_name": "パティシエ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0407",
+    "job_name": "パン職人",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0408",
+    "job_name": "パン製造",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0409",
+    "job_name": "パン屋関連",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0410",
+    "job_name": "パーソナルトレーナー",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "スポーツ・フィットネス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0411",
+    "job_name": "秘書",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "受付・秘書",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0412",
+    "job_name": "非破壊検査",
+    "concept_type": "作業・業務",
+    "major_category": "製造・工場",
+    "middle_category": "生産・品質・研究開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0413",
+    "job_name": "品質管理",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "生産・品質・研究開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0414",
+    "job_name": "品質保証",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "生産・品質・研究開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0415",
+    "job_name": "ビジネスアナリスト",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITコンサル・PM",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0416",
+    "job_name": "ビューティアドバイザー",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0417",
+    "job_name": "ビューティーアドバイザー",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0418",
+    "job_name": "病院",
+    "concept_type": "職場・業態",
+    "major_category": "医療",
+    "middle_category": "医療施設・診療領域",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0419",
+    "job_name": "病棟クラーク",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0420",
+    "job_name": "美容師",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0421",
+    "job_name": "美容部員",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0422",
+    "job_name": "ビルメンテナンス関連",
+    "concept_type": "職種・職能",
+    "major_category": "建築・土木・設備",
+    "middle_category": "設備・電気工事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0423",
+    "job_name": "ピッキング",
+    "concept_type": "作業・業務",
+    "major_category": "物流・運輸",
+    "middle_category": "倉庫・荷役",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0424",
+    "job_name": "PT",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "リハビリ",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0425",
+    "job_name": "ファイナンシャルプランナー",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "金融・保険",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0426",
+    "job_name": "ファッションアドバイザー",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0427",
+    "job_name": "ファッションデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0428",
+    "job_name": "フィットネスクラブ関連",
+    "concept_type": "職場・業態",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "スポーツ・フィットネス",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0429",
+    "job_name": "フィールドエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "保守・整備・サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0430",
+    "job_name": "フォトグラファー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "映像・放送・写真",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0431",
+    "job_name": "フォワーダー",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "物流・運行管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0432",
+    "job_name": "フォークリフト",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "倉庫・荷役",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0433",
+    "job_name": "福祉用具専門相談員",
+    "concept_type": "資格・専門職",
+    "major_category": "介護・福祉",
+    "middle_category": "ケアマネ・福祉用具",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0434",
+    "job_name": "不動産営業",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0435",
+    "job_name": "不動産鑑定士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "不動産",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0436",
+    "job_name": "不動産事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0437",
+    "job_name": "不動産仲介",
+    "concept_type": "職種・職能",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "不動産",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0438",
+    "job_name": "フラワーアレンジメント関連",
+    "concept_type": "作業・業務",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0439",
+    "job_name": "フロアレディ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0440",
+    "job_name": "フロントエンドエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0441",
+    "job_name": "フードコーディネーター",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0442",
+    "job_name": "舞台スタッフ",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "芸能・音楽・イベント",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0443",
+    "job_name": "物流管理関連",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "物流・運行管理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0444",
+    "job_name": "ブライダル",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "宿泊・観光・ブライダル",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0445",
+    "job_name": "ブライダルコーディネーター",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "宿泊・観光・ブライダル",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0446",
+    "job_name": "プラスチック成形",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0447",
+    "job_name": "プラントエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "プラント",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0448",
+    "job_name": "プラントオペレーター",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "プラント",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0449",
+    "job_name": "プラント設計",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "プラント",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0450",
+    "job_name": "プログラマー",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0451",
+    "job_name": "プロジェクトマネージャー",
+    "concept_type": "役職・ポジション",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITコンサル・PM",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0452",
+    "job_name": "プロセスエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "生産・品質・研究開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0453",
+    "job_name": "プロダクトデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0454",
+    "job_name": "プロデューサー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "芸能・音楽・イベント",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0455",
+    "job_name": "ヘアメイク",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0456",
+    "job_name": "ヘルプデスク",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ITサポート・運用",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0457",
+    "job_name": "編集者",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "出版・編集・ライティング",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0458",
+    "job_name": "ベビーシッター関連",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "保育・児童",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0459",
+    "job_name": "弁護士",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "法律・労務士業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0460",
+    "job_name": "弁理士",
+    "concept_type": "資格・専門職",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "法律・労務士業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0461",
+    "job_name": "便利屋",
+    "concept_type": "職種・職能",
+    "major_category": "その他・サービス",
+    "middle_category": "生活サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0462",
+    "job_name": "ペットショップ",
+    "concept_type": "職場・業態",
+    "major_category": "農林水産・動物",
+    "middle_category": "動物",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0463",
+    "job_name": "保育士",
+    "concept_type": "資格・専門職",
+    "major_category": "保育・教育",
+    "middle_category": "保育・児童",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0464",
+    "job_name": "放射線技師",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "医療技師・検査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0465",
+    "job_name": "法人営業",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0466",
+    "job_name": "法務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "管理・法務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0467",
+    "job_name": "訪問看護",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "看護・助産・保健",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0468",
+    "job_name": "訪問入浴",
+    "concept_type": "作業・業務",
+    "major_category": "介護・福祉",
+    "middle_category": "介護職・介護サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0469",
+    "job_name": "法律事務所",
+    "concept_type": "職場・業態",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "法律・労務士業",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0470",
+    "job_name": "保険営業",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0471",
+    "job_name": "保健師",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "看護・助産・保健",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0472",
+    "job_name": "ホスト関連",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "娯楽・接客",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0473",
+    "job_name": "ホテルスタッフ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "宿泊・観光・ブライダル",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0474",
+    "job_name": "ホテルフロント",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "宿泊・観光・ブライダル",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0475",
+    "job_name": "本屋関連",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0476",
+    "job_name": "翻訳",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0477",
+    "job_name": "ホームセンター",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0478",
+    "job_name": "ホームヘルパー",
+    "concept_type": "職種・職能",
+    "major_category": "介護・福祉",
+    "middle_category": "介護職・介護サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0479",
+    "job_name": "ホールスタッフ",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0480",
+    "job_name": "ボイラー技士関連",
+    "concept_type": "資格・専門職",
+    "major_category": "建築・土木・設備",
+    "middle_category": "設備・電気工事",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0481",
+    "job_name": "貿易事務",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "専門事務",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0482",
+    "job_name": "牧場",
+    "concept_type": "職場・業態",
+    "major_category": "農林水産・動物",
+    "middle_category": "農業・畜産",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0483",
+    "job_name": "ポスティング",
+    "concept_type": "作業・業務",
+    "major_category": "その他・サービス",
+    "middle_category": "生活サービス",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0484",
+    "job_name": "マシンオペレーター",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0485",
+    "job_name": "マッサージ師",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0486",
+    "job_name": "マンション管理",
+    "concept_type": "職種・職能",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "不動産",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0487",
+    "job_name": "マーケティング",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "マーケティング・広報",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0488",
+    "job_name": "マーチャンダイザー",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "企画・商品開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0489",
+    "job_name": "メイクアップアーティスト関連",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0490",
+    "job_name": "モバイルエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0491",
+    "job_name": "モーションデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "ゲーム・CG",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0492",
+    "job_name": "焼肉屋",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0493",
+    "job_name": "役員秘書",
+    "concept_type": "職種・職能",
+    "major_category": "事務・管理",
+    "middle_category": "受付・秘書",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0494",
+    "job_name": "薬剤師",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "薬剤・臨床開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0495",
+    "job_name": "薬事申請",
+    "concept_type": "技術・専門領域",
+    "major_category": "医療",
+    "middle_category": "薬剤・臨床開発",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0496",
+    "job_name": "郵便局",
+    "concept_type": "職場・業態",
+    "major_category": "物流・運輸",
+    "middle_category": "配送・宅配",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0497",
+    "job_name": "郵便配達",
+    "concept_type": "作業・業務",
+    "major_category": "物流・運輸",
+    "middle_category": "配送・宅配",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0498",
+    "job_name": "UIデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0499",
+    "job_name": "UXデザイナー",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "デザイン",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0500",
+    "job_name": "Youtuber",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "芸能・音楽・イベント",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0501",
+    "job_name": "養護教諭関連",
+    "concept_type": "資格・専門職",
+    "major_category": "保育・教育",
+    "middle_category": "学校教育",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0502",
+    "job_name": "溶接",
+    "concept_type": "作業・業務",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0503",
+    "job_name": "幼稚園教諭",
+    "concept_type": "資格・専門職",
+    "major_category": "保育・教育",
+    "middle_category": "保育・児童",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0504",
+    "job_name": "用地仕入れ",
+    "concept_type": "職種・職能",
+    "major_category": "金融・不動産・士業",
+    "middle_category": "不動産",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0505",
+    "job_name": "養豚",
+    "concept_type": "職種・職能",
+    "major_category": "農林水産・動物",
+    "middle_category": "農業・畜産",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0506",
+    "job_name": "用務員",
+    "concept_type": "職種・職能",
+    "major_category": "保育・教育",
+    "middle_category": "教育支援・施設",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0507",
+    "job_name": "4tドライバー",
+    "concept_type": "職種・職能",
+    "major_category": "物流・運輸",
+    "middle_category": "ドライバー",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0508",
+    "job_name": "ライター",
+    "concept_type": "職種・職能",
+    "major_category": "クリエイティブ・メディア",
+    "middle_category": "出版・編集・ライティング",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0509",
+    "job_name": "ライン作業関連",
+    "concept_type": "作業・業務",
+    "major_category": "製造・工場",
+    "middle_category": "製造・加工・組立",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0510",
+    "job_name": "ラウンダー",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業支援・販売促進",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0511",
+    "job_name": "酪農",
+    "concept_type": "職種・職能",
+    "major_category": "農林水産・動物",
+    "middle_category": "農業・畜産",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0512",
+    "job_name": "ラーメン屋",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0513",
+    "job_name": "理学療法士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "リハビリ",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0514",
+    "job_name": "リサーチャー",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "企画・商品開発",
+    "review_status": "要確認",
+    "note": "語義が広い、または主分類が一意に定まりにくいため次段階で再確認"
+  },
+  {
+    "job_id": "JOB0515",
+    "job_name": "リゾートバイト",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "宿泊・観光・ブライダル",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0516",
+    "job_name": "リハビリ助手",
+    "concept_type": "職種・職能",
+    "major_category": "医療",
+    "middle_category": "リハビリ",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0517",
+    "job_name": "リフォーム営業",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0518",
+    "job_name": "リフォームプランナー",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業支援・販売促進",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0519",
+    "job_name": "リフレクソロジー関連",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "エステ・リラク・施術",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0520",
+    "job_name": "料理長",
+    "concept_type": "役職・ポジション",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0521",
+    "job_name": "料理人関連",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0522",
+    "job_name": "旅館",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "宿泊・観光・ブライダル",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0523",
+    "job_name": "理容師",
+    "concept_type": "職種・職能",
+    "major_category": "美容・健康・スポーツ",
+    "middle_category": "理美容・メイク",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0524",
+    "job_name": "臨床開発",
+    "concept_type": "技術・専門領域",
+    "major_category": "医療",
+    "middle_category": "薬剤・臨床開発",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0525",
+    "job_name": "臨床検査",
+    "concept_type": "技術・専門領域",
+    "major_category": "医療",
+    "middle_category": "医療技師・検査",
+    "review_status": "初期分類",
+    "note": "職種ではなく技術・専門領域を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0526",
+    "job_name": "臨床検査技師",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "医療技師・検査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0527",
+    "job_name": "臨床工学技士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "医療技師・検査",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0528",
+    "job_name": "臨床心理士",
+    "concept_type": "資格・専門職",
+    "major_category": "医療",
+    "middle_category": "医療・健康専門",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0529",
+    "job_name": "リードエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "IT・デジタル",
+    "middle_category": "ソフトウェア・Web開発",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0530",
+    "job_name": "ルート営業",
+    "concept_type": "職種・職能",
+    "major_category": "営業・企画・マーケティング",
+    "middle_category": "営業",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0531",
+    "job_name": "ルート配送",
+    "concept_type": "作業・業務",
+    "major_category": "物流・運輸",
+    "middle_category": "配送・宅配",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0532",
+    "job_name": "レジ打ち",
+    "concept_type": "職種・職能",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "小売・販売",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0533",
+    "job_name": "レストラン",
+    "concept_type": "職場・業態",
+    "major_category": "販売・接客・飲食",
+    "middle_category": "飲食・調理",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0534",
+    "job_name": "老人ホーム",
+    "concept_type": "職場・業態",
+    "major_category": "介護・福祉",
+    "middle_category": "介護職・介護サービス",
+    "review_status": "初期分類",
+    "note": "職種ではなく勤務先・業態を示す語。タグ・関連関係で周辺職種へ接続予定"
+  },
+  {
+    "job_id": "JOB0535",
+    "job_name": "ロボットエンジニア",
+    "concept_type": "職種・職能",
+    "major_category": "製造・工場",
+    "middle_category": "機械・電気設計",
+    "review_status": "初期分類",
+    "note": ""
+  },
+  {
+    "job_id": "JOB0536",
+    "job_name": "ロードサービス",
+    "concept_type": "作業・業務",
+    "major_category": "製造・工場",
+    "middle_category": "保守・整備・サービス",
+    "review_status": "初期分類",
+    "note": ""
+  }
+]
