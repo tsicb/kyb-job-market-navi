@@ -93,14 +93,21 @@
         <div id="lastUpdated" class="last-updated"></div>
       </div>
 
-      <div class="tabs" role="tablist" aria-label="市場データ">
-        <button class="tab active" type="button" data-tab="summary">全国市場</button>
-        <button class="tab" type="button" data-tab="prefecture">都道府県別給与</button>
-        <button class="tab" type="button" data-tab="monthly">月別求人数</button>
-        <button class="tab" type="button" data-tab="conditions">条件別給与</button>
+      <div class="tabs">
+        <div class="tab-strip" role="tablist" aria-label="市場データ">
+          <button class="tab active" type="button" data-tab="summary">全国市場</button>
+          <button class="tab" type="button" data-tab="prefecture">都道府県別給与</button>
+          <button class="tab" type="button" data-tab="monthly">月別求人数</button>
+          <button class="tab" type="button" data-tab="conditions">条件別給与</button>
+        </div>
+        <button id="excelExportButton" class="excel-export-button" type="button" title="現在の分析条件を5シートのExcelに出力">Excel一括出力</button>
       </div>
 
       <div id="tab-summary" class="tab-panel active">
+        <div class="toolbar summary-toolbar">
+          <div id="summaryToolbarContext" class="toolbar-context"></div>
+          <button class="copy-tsv-button toolbar-action" type="button" data-copy-table="summary">TSVコピー</button>
+        </div>
         <div id="summaryHighlights" class="highlights"></div>
         <div class="table-note">緑＝選択対象より高い／多い　赤＝選択対象より低い／少ない</div>
         <div class="table-wrap">
@@ -130,6 +137,7 @@
               <option value="temp">派遣</option>
             </select>
           </label>
+          <button class="copy-tsv-button toolbar-action" type="button" data-copy-table="prefecture">TSVコピー</button>
         </div>
         <div id="prefCaption" class="section-caption"></div>
         <div class="table-note">緑＝基準より高い　赤＝基準より低い</div>
@@ -154,6 +162,7 @@
               <option value="10">上位10職種</option>
             </select>
           </label>
+          <button class="copy-tsv-button toolbar-action" type="button" data-copy-table="monthly">TSVコピー</button>
         </div>
         <div class="chart-card">
           <div id="monthlyChartTitle" class="chart-title"></div>
@@ -179,6 +188,7 @@
               <option value="temp">派遣</option>
             </select>
           </label>
+          <button class="copy-tsv-button toolbar-action" type="button" data-copy-table="conditions">TSVコピー</button>
         </div>
         <div class="section-caption">「条件」は求人ボックスが各職種について給与統計を表示している関連条件です。</div>
         <div class="table-wrap">
@@ -195,6 +205,7 @@
 
   <div id="toast" class="toast" hidden></div>
   <script src="./config.js"></script>
+  <script src="./xlsx-export.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>

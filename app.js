@@ -32,6 +32,8 @@
     relatedCount: $("relatedCount"),
     resultsPanel: $("resultsPanel"),
     lastUpdated: $("lastUpdated"),
+    excelExportButton: $("excelExportButton"),
+    summaryToolbarContext: $("summaryToolbarContext"),
     summaryHighlights: $("summaryHighlights"),
     summaryTable: $("summaryTable"),
     prefMode: $("prefMode"),
@@ -729,6 +731,11 @@
     els.conditionJobSelect.addEventListener("change", renderConditions);
     els.conditionEmployment.addEventListener("change", renderConditions);
 
+    els.excelExportButton?.addEventListener("click", exportExcelWorkbook);
+    document.querySelectorAll("button[data-copy-table]").forEach(button => {
+      button.addEventListener("click", () => copyTableAsTsv(button.dataset.copyTable, button));
+    });
+
     const sortRenderers = {
       summary: renderSummary,
       prefecture: renderPrefecture,
@@ -1119,6 +1126,10 @@
 
   function renderSummary() {
     const base = summaryValues(state.selectedJobId);
+    const selectedName = state.idx.classById.get(state.selectedJobId)?.job_name || "";
+    if (els.summaryToolbarContext) {
+      els.summaryToolbarContext.innerHTML = `<strong>選択対象：${escapeHtml(selectedName)}</strong><span>関連範囲：${escapeHtml(expandLevelText(state.expandLevel))}（${state.related.length}項目）</span>`;
+    }
     const salaryRows = state.related
       .map(r => ({ ...r, v: numberOrNull(summaryValues(r.job_id).regular_salary_median_10k_yen) }))
       .filter(r => r.v !== null)
@@ -1409,6 +1420,342 @@
           <td class="left">${escapeHtml(r.job_name)}</td><td class="left">${escapeHtml(r.condition)}</td>
           <td class="num">${formatSalary(r[meta.condition], emp)}</td>
         </tr>`).join("")}</tbody>`;
+    }
+  }
+
+  function expandLevelText(level) {
+    return ({ 1: "1｜厳密", 2: "2｜標準", 3: "3｜広め" })[Number(level)] || String(level || "");
+  }
+
+  function selectedTargetName() {
+    return state.idx.classById.get(state.selectedJobId)?.job_name || "";
+  }
+
+  function employmentText(emp) {
+    return emp === "all" ? "すべて" : (EMP[emp]?.label || emp || "");
+  }
+
+  function formatLocalDateTime(date = new Date()) {
+    const pad = n => String(n).padStart(2, "0");
+    return `${date.getFullYear()}/${pad(date.getMonth() + 1)}/${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+  }
+
+  function exportTimestamp(date = new Date()) {
+    const pad = n => String(n).padStart(2, "0");
+    return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}_${pad(date.getHours())}${pad(date.getMinutes())}`;
+  }
+
+  function safeFilenamePart(value) {
+    return String(value || "data").replace(/[\\/:*?"<>|]/g, "_").replace(/\s+/g, " ").trim().slice(0, 60) || "data";
+  }
+
+  function baseExportMeta(extra = []) {
+    return [
+      { label: "選択対象", value: selectedTargetName() },
+      { label: "関連範囲", value: `${expandLevelText(state.expandLevel)}（${state.related.length}項目）` },
+      ...extra,
+      { label: "出力日時", value: formatLocalDateTime() },
+      { label: "データ出典", value: "求人ボックス" }
+    ];
+  }
+
+  function sortDescription(tableName, defaultLabel) {
+    const current = state.sort[tableName];
+    if (!current?.key || !current.direction) return defaultLabel;
+    const labels = {
+      regular_salary_median_10k_yen: "正社員年収",
+      parttime_salary_median_yen_hour: "パート時給",
+      temp_salary_median_yen_hour: "派遣時給",
+      regular_jobs_current: "正社員求人数",
+      parttime_jobs_current: "パート求人数",
+      temp_jobs_current: "派遣求人数",
+      regular: "正社員給与",
+      parttime: "パート給与",
+      temp: "派遣給与"
+    };
+    return `${labels[current.key] || current.key} ${current.direction === "desc" ? "降順" : "昇順"}`;
+  }
+
+  function num(v) {
+    return numberOrNull(v);
+  }
+
+  function summaryExportTable() {
+    const rows = sortRowsNumeric(state.related, "summary", (r, key) => summaryValues(r.job_id)[key]);
+    const columns = [
+      { header: "職種", format: "text", width: 24 },
+      { header: "大分類", format: "text", width: 20 },
+      { header: "中分類", format: "text", width: 22 },
+      { header: "抽出理由", format: "text", width: 24 },
+      { header: "検索スコア", format: "integer", width: 12 },
+      { header: "正社員 年収（万円）", format: "regularSalary", width: 18 },
+      { header: "選択対象との差（万円）", format: "diffRegular", width: 21 },
+      { header: "パート 時給（円）", format: "yen", width: 18 },
+      { header: "選択対象との差（円）", format: "diffYen", width: 20 },
+      { header: "派遣 時給（円）", format: "yen", width: 18 },
+      { header: "選択対象との差（円）", format: "diffYen", width: 20 },
+      { header: "正社員 現在求人数（件）", format: "integer", width: 21 },
+      { header: "選択対象比", format: "ratio", width: 14 },
+      { header: "パート 現在求人数（件）", format: "integer", width: 21 },
+      { header: "選択対象比", format: "ratio", width: 14 },
+      { header: "派遣 現在求人数（件）", format: "integer", width: 21 },
+      { header: "選択対象比", format: "ratio", width: 14 }
+    ];
+    return {
+      name: "01_全国市場",
+      title: "求人ボックスデータ｜全国市場",
+      meta: baseExportMeta([{ label: "並び順", value: sortDescription("summary", "関連度順") }]),
+      columns,
+      rows: rows.map(r => {
+        const d = summaryValues(r.job_id);
+        return {
+          highlight: r.job_id === state.selectedJobId,
+          values: [
+            r.job_name, r.major_category, r.middle_category, r.reason, Number(r.score) || 0,
+            num(d.regular_salary_median_10k_yen), salaryDiff(r.job_id, "regular"),
+            num(d.parttime_salary_median_yen_hour), salaryDiff(r.job_id, "parttime"),
+            num(d.temp_salary_median_yen_hour), salaryDiff(r.job_id, "temp"),
+            num(d.regular_jobs_current), jobRatio(r.job_id, "regular_jobs_current"),
+            num(d.parttime_jobs_current), jobRatio(r.job_id, "parttime_jobs_current"),
+            num(d.temp_jobs_current), jobRatio(r.job_id, "temp_jobs_current")
+          ]
+        };
+      })
+    };
+  }
+
+  function prefExportSalaryColumns(emp) {
+    const emps = emp === "all" ? ["regular", "parttime", "temp"] : [emp];
+    return emps.flatMap(key => {
+      const regular = key === "regular";
+      return [
+        { emp: key, header: regular ? "正社員 年収（万円）" : `${EMP[key].label} 時給（円）`, format: regular ? "regularSalary" : "yen", width: 18 },
+        { emp: key, diff: true, header: regular ? "基準との差（万円）" : "基準との差（円）", format: regular ? "diffRegular" : "diffYen", width: 18 }
+      ];
+    });
+  }
+
+  function prefectureExportTable(mode) {
+    const emp = els.prefEmployment.value || "all";
+    const selectedPref = els.prefectureSelect.value || "東京都";
+    const selectedJobId = els.prefJobSelect.value || state.selectedJobId;
+    const selectedJob = state.idx.classById.get(selectedJobId);
+    const salaryColumns = prefExportSalaryColumns(emp);
+    const columns = [
+      { header: mode === "allPrefs" ? "職種（固定）" : "職種", format: "text", width: 25 },
+      { header: mode === "compare" ? "都道府県（固定）" : "都道府県", format: "text", width: 16 },
+      ...salaryColumns.map(c => ({ header: c.header, format: c.format, width: c.width }))
+    ];
+
+    if (mode === "compare") {
+      const baseRow = state.idx.prefByJob.get(selectedJobId)?.get(selectedPref);
+      const defaults = state.related.map(r => ({ ...r, prefRow: state.idx.prefByJob.get(r.job_id)?.get(selectedPref) }));
+      const rows = sortRowsNumeric(defaults, "prefecture", (r, key) => r.prefRow?.[EMP[key].prefSalary]);
+      return {
+        name: "02_都道府県固定_職種比較",
+        title: "求人ボックスデータ｜都道府県固定・職種比較",
+        meta: baseExportMeta([
+          { label: "固定する都道府県", value: selectedPref },
+          { label: "基準にする職種", value: selectedJob?.job_name || "" },
+          { label: "雇用形態", value: employmentText(emp) },
+          { label: "並び順", value: sortDescription("prefecture", "関連度順") }
+        ]),
+        columns,
+        rows: rows.map(r => {
+          const values = [r.job_name, selectedPref];
+          salaryColumns.forEach(c => {
+            const v = num(r.prefRow?.[EMP[c.emp].prefSalary]);
+            const b = num(baseRow?.[EMP[c.emp].prefSalary]);
+            values.push(c.diff ? (v === null || b === null ? null : v - b) : v);
+          });
+          return { highlight: r.job_id === selectedJobId, values };
+        })
+      };
+    }
+
+    const job = selectedJob;
+    const byPref = state.idx.prefByJob.get(selectedJobId) || new Map();
+    const baseRow = byPref.get(selectedPref);
+    const defaults = PREFECTURES.map(pref => ({ pref, prefRow: byPref.get(pref) }));
+    const rows = sortRowsNumeric(defaults, "prefecture", (r, key) => r.prefRow?.[EMP[key].prefSalary]);
+    return {
+      name: "03_職種固定_47都道府県",
+      title: "求人ボックスデータ｜職種固定・47都道府県比較",
+      meta: baseExportMeta([
+        { label: "固定する職種", value: job?.job_name || "" },
+        { label: "基準にする都道府県", value: selectedPref },
+        { label: "雇用形態", value: employmentText(emp) },
+        { label: "並び順", value: sortDescription("prefecture", "都道府県順") }
+      ]),
+      columns,
+      rows: rows.map(r => {
+        const values = [job?.job_name || "", r.pref];
+        salaryColumns.forEach(c => {
+          const v = num(r.prefRow?.[EMP[c.emp].prefSalary]);
+          const b = num(baseRow?.[EMP[c.emp].prefSalary]);
+          values.push(c.diff ? (v === null || b === null ? null : v - b) : v);
+        });
+        return { highlight: r.pref === selectedPref, values };
+      })
+    };
+  }
+
+  function monthlyExportTable() {
+    const emp = els.monthlyEmployment.value;
+    const key = EMP[emp].monthly;
+    const limit = Number(els.monthlyJobLimit.value || 6);
+    const jobs = state.related.slice(0, limit);
+    const months = [...new Set(jobs.flatMap(j => (state.idx.monthlyByJob.get(j.job_id) || []).map(r => r.month)))].sort();
+    const byJobMonth = new Map();
+    jobs.forEach(j => byJobMonth.set(j.job_id, new Map((state.idx.monthlyByJob.get(j.job_id) || []).map(r => [r.month, num(r[key])]))));
+    return {
+      name: "04_月別求人数",
+      title: "求人ボックスデータ｜月別求人数",
+      meta: baseExportMeta([
+        { label: "雇用形態", value: EMP[emp].label },
+        { label: "比較職種数", value: `${jobs.length}項目` },
+        { label: "並び順", value: "年月昇順" }
+      ]),
+      columns: [
+        { header: "年月", format: "text", width: 13 },
+        ...jobs.map(j => ({ header: `${j.job_name}${j.job_id === state.selectedJobId ? "（選択中）" : ""} 求人数（件）`, format: "integer", width: 22 }))
+      ],
+      rows: months.map(month => ({ values: [month, ...jobs.map(j => byJobMonth.get(j.job_id).get(month) ?? null)] }))
+    };
+  }
+
+  function conditionsExportTable() {
+    const filterJob = els.conditionJobSelect.value || "all";
+    const emp = els.conditionEmployment.value || "all";
+    const relatedIds = new Set(state.related.map(r => r.job_id));
+    const order = new Map(state.related.map((r, i) => [r.job_id, i]));
+    let rows = state.data.conditions.filter(r => relatedIds.has(r.job_id));
+    if (filterJob !== "all") rows = rows.filter(r => r.job_id === filterJob);
+    rows.sort((a, b) => (order.get(a.job_id) ?? 9999) - (order.get(b.job_id) ?? 9999) || a.condition.localeCompare(b.condition, "ja"));
+    const visibleKeys = emp === "all" ? ["regular", "parttime", "temp"] : [emp];
+    ensureSortKeyVisible("conditions", visibleKeys);
+    rows = sortRowsNumeric(rows, "conditions", (r, key) => r[EMP[key].condition]);
+
+    const salaryCols = visibleKeys.map(key => ({
+      emp: key,
+      header: key === "regular" ? "正社員 年収（万円）" : `${EMP[key].label} 時給（円）`,
+      format: key === "regular" ? "regularSalary" : "yen",
+      width: 18
+    }));
+    const filterLabel = filterJob === "all" ? `選択対象＋関連項目すべて（${state.related.length}項目）` : (state.idx.classById.get(filterJob)?.job_name || "");
+    return {
+      name: "05_条件別給与",
+      title: "求人ボックスデータ｜条件別給与",
+      meta: baseExportMeta([
+        { label: "職種", value: filterLabel },
+        { label: "雇用形態", value: employmentText(emp) },
+        { label: "並び順", value: sortDescription("conditions", "関連度・条件名順") }
+      ]),
+      columns: [
+        { header: "職種", format: "text", width: 25 },
+        { header: "条件", format: "text", width: 30 },
+        ...salaryCols.map(c => ({ header: c.header, format: c.format, width: c.width }))
+      ],
+      rows: rows.map(r => ({
+        highlight: r.job_id === state.selectedJobId,
+        values: [r.job_name, r.condition, ...salaryCols.map(c => num(r[EMP[c.emp].condition]))]
+      }))
+    };
+  }
+
+  function currentTableForCopy(key) {
+    if (key === "summary") return summaryExportTable();
+    if (key === "prefecture") return prefectureExportTable(els.prefMode.value === "allPrefs" ? "allPrefs" : "compare");
+    if (key === "monthly") return monthlyExportTable();
+    if (key === "conditions") return conditionsExportTable();
+    return null;
+  }
+
+  function tsvCell(value) {
+    if (value === null || value === undefined) return "";
+    return String(value).replace(/[\t\r\n]+/g, " ");
+  }
+
+  function tableToTsv(table) {
+    const header = table.columns.map(c => tsvCell(c.header)).join("\t");
+    const body = table.rows.map(row => (row.values || row).map(tsvCell).join("\t")).join("\n");
+    return body ? `${header}\n${body}` : header;
+  }
+
+  async function writeClipboardText(text) {
+    if (navigator.clipboard?.writeText && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    ta.style.pointerEvents = "none";
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand("copy");
+    ta.remove();
+    if (!ok) throw new Error("クリップボードへコピーできませんでした。");
+  }
+
+  async function copyTableAsTsv(key, button) {
+    if (!state.selectedJobId) return;
+    const table = currentTableForCopy(key);
+    if (!table) return;
+    const original = button?.textContent || "TSVコピー";
+    try {
+      await writeClipboardText(tableToTsv(table));
+      if (button) {
+        button.textContent = "✓ コピーしました";
+        button.classList.add("copied");
+        setTimeout(() => {
+          button.textContent = original;
+          button.classList.remove("copied");
+        }, 1600);
+      }
+      showToast("表をTSV形式でコピーしました。スプレッドシートへそのまま貼り付けできます。");
+    } catch (err) {
+      console.error(err);
+      showToast("TSVコピーに失敗しました。ブラウザのクリップボード権限を確認してください。");
+    }
+  }
+
+  async function exportExcelWorkbook() {
+    if (!state.selectedJobId) return;
+    if (!window.MiniXLSX?.downloadWorkbook) {
+      showToast("Excel出力モジュールを読み込めませんでした。ページを再読み込みしてください。");
+      return;
+    }
+    const button = els.excelExportButton;
+    const original = button?.textContent || "Excel一括出力";
+    try {
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Excel作成中…";
+      }
+      await new Promise(resolve => requestAnimationFrame(() => resolve()));
+      const spec = {
+        sheets: [
+          summaryExportTable(),
+          prefectureExportTable("compare"),
+          prefectureExportTable("allPrefs"),
+          monthlyExportTable(),
+          conditionsExportTable()
+        ]
+      };
+      const filename = `求人市場ナビ_${safeFilenamePart(selectedTargetName())}_${exportTimestamp()}.xlsx`;
+      window.MiniXLSX.downloadWorkbook(spec, filename);
+      showToast("5つの表をExcelに出力しました。");
+    } catch (err) {
+      console.error(err);
+      showToast(`Excel出力に失敗しました：${err?.message || "不明なエラー"}`);
+    } finally {
+      if (button) {
+        button.disabled = false;
+        button.textContent = original;
+      }
     }
   }
 
