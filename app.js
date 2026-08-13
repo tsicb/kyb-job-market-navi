@@ -744,6 +744,186 @@
         sortRenderers[tableName]?.();
       });
     });
+
+    initStickyMarketView();
+  }
+
+  function initStickyMarketView() {
+    const tabs = document.querySelector(".results-panel .tabs");
+    if (!tabs || $("stickyMarketTableHead")) return;
+
+    const sticky = document.createElement("div");
+    sticky.id = "stickyMarketTableHead";
+    sticky.className = "sticky-table-head";
+    sticky.innerHTML = '<div class="sticky-table-head-viewport"></div>';
+    document.body.appendChild(sticky);
+    const viewport = sticky.firstElementChild;
+
+    let activeTable = null;
+    let activeWrap = null;
+    let clonedFrom = null;
+    let raf = 0;
+
+    function schedule() {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        update();
+      });
+    }
+
+    function syncTabsHeight() {
+      const h = Math.ceil(tabs.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--market-tabs-height", `${h}px`);
+    }
+
+    function getActiveTable() {
+      const panel = document.querySelector(".tab-panel.active");
+      if (!panel) return { panel: null, wrap: null, table: null };
+      const table = panel.querySelector(".table-wrap .data-table");
+      return { panel, wrap: table?.closest(".table-wrap") || null, table };
+    }
+
+    function getStickyStackBottom(panel) {
+      const tabsRect = tabs.getBoundingClientRect();
+      let bottom = Math.max(0, tabsRect.bottom);
+      const toolbar = panel?.querySelector(":scope > .toolbar");
+      if (!toolbar || getComputedStyle(toolbar).position !== "sticky") return bottom;
+      const r = toolbar.getBoundingClientRect();
+      // 表が上端へ届く頃にはtoolbarはsticky済み。実測bottomを使うことで折返しにも追従する。
+      if (r.top <= bottom + 2) bottom = Math.max(bottom, r.bottom);
+      return bottom;
+    }
+
+    function getLeafWidths(table) {
+      const bodyRow = table.tBodies?.[0]?.rows?.[0];
+      if (bodyRow?.cells?.length) {
+        return [...bodyRow.cells].map(cell => cell.getBoundingClientRect().width);
+      }
+      const rows = [...(table.tHead?.rows || [])];
+      const last = rows[rows.length - 1];
+      if (!last) return [];
+      return [...last.cells].map(cell => cell.getBoundingClientRect().width);
+    }
+
+    function rebuildClone(table) {
+      if (!table?.tHead) {
+        viewport.innerHTML = "";
+        clonedFrom = null;
+        return;
+      }
+      const widths = getLeafWidths(table);
+      const clone = table.cloneNode(false);
+      clone.removeAttribute("id");
+      clone.classList.add("sticky-head-table");
+      clone.style.minWidth = "0";
+      clone.style.width = `${Math.max(table.scrollWidth, table.getBoundingClientRect().width)}px`;
+
+      if (widths.length) {
+        const colgroup = document.createElement("colgroup");
+        widths.forEach(width => {
+          const col = document.createElement("col");
+          col.style.width = `${width}px`;
+          colgroup.appendChild(col);
+        });
+        clone.appendChild(colgroup);
+      }
+      clone.appendChild(table.tHead.cloneNode(true));
+      viewport.replaceChildren(clone);
+      clonedFrom = table;
+    }
+
+    function syncHorizontal() {
+      if (!activeWrap) return;
+      viewport.scrollLeft = activeWrap.scrollLeft;
+    }
+
+    function hide() {
+      sticky.classList.remove("visible");
+      activeTable = null;
+      activeWrap = null;
+    }
+
+    function update() {
+      syncTabsHeight();
+      const { panel, wrap, table } = getActiveTable();
+      if (!panel || !wrap || !table || !table.tHead || !table.tBodies.length) {
+        hide();
+        return;
+      }
+
+      const stackBottom = getStickyStackBottom(panel);
+      const headRect = table.tHead.getBoundingClientRect();
+      const tableRect = table.getBoundingClientRect();
+      const wrapRect = wrap.getBoundingClientRect();
+      const shouldShow = headRect.top <= stackBottom + 1 && tableRect.bottom > stackBottom + headRect.height + 1;
+
+      if (!shouldShow) {
+        hide();
+        return;
+      }
+
+      activeTable = table;
+      activeWrap = wrap;
+      if (clonedFrom !== table || !viewport.firstElementChild) rebuildClone(table);
+
+      // 表の再描画やレスポンシブ変更で列幅が変わった場合も追従させる。
+      const clone = viewport.firstElementChild;
+      const desiredWidth = Math.max(table.scrollWidth, table.getBoundingClientRect().width);
+      if (clone && Math.abs(parseFloat(clone.style.width || "0") - desiredWidth) > 1) rebuildClone(table);
+
+      sticky.style.top = `${Math.round(stackBottom)}px`;
+      sticky.style.left = `${Math.round(wrapRect.left)}px`;
+      sticky.style.width = `${Math.round(wrapRect.width)}px`;
+      sticky.classList.add("visible");
+      syncHorizontal();
+    }
+
+    // 複製ヘッダーのソートボタンは、元テーブルの同じボタンへクリックを転送する。
+    sticky.addEventListener("click", e => {
+      const button = e.target.closest("button[data-sort-table][data-sort-key]");
+      if (!button || !activeTable) return;
+      const tableName = button.dataset.sortTable;
+      const key = button.dataset.sortKey;
+      const original = activeTable.querySelector(`button[data-sort-table="${tableName}"][data-sort-key="${key}"]`);
+      original?.click();
+      schedule();
+    });
+
+    document.querySelectorAll(".table-wrap").forEach(wrap => {
+      wrap.addEventListener("scroll", () => {
+        if (wrap === activeWrap) syncHorizontal();
+      }, { passive: true });
+    });
+
+    const observer = new MutationObserver(() => {
+      clonedFrom = null;
+      schedule();
+    });
+    [els.summaryTable, els.prefTable, els.monthlyTable, els.conditionTable].forEach(table => {
+      observer.observe(table, { childList: true, subtree: true });
+    });
+
+    tabs.addEventListener("click", () => {
+      clonedFrom = null;
+      requestAnimationFrame(schedule);
+    });
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", () => {
+      clonedFrom = null;
+      schedule();
+    }, { passive: true });
+
+    if (window.ResizeObserver) {
+      const resizeObserver = new ResizeObserver(() => {
+        clonedFrom = null;
+        schedule();
+      });
+      resizeObserver.observe(tabs);
+      document.querySelectorAll(".tab-panel > .toolbar, .table-wrap").forEach(el => resizeObserver.observe(el));
+    }
+
+    schedule();
   }
 
   function searchCandidates(rawQuery) {

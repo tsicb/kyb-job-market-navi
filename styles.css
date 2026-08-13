@@ -156,6 +156,12 @@ select {
 .last-updated { color:var(--muted); font-size:12px; align-self:flex-end; }
 .tabs {
   display:flex; gap:5px; border-bottom:1px solid var(--border); overflow-x:auto; margin-bottom:16px; scrollbar-width:thin;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(245, 247, 251, .97);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 12px rgba(30, 41, 59, .04);
 }
 .tab {
   border:0; border-bottom:3px solid transparent; background:transparent; padding:11px 14px; white-space:nowrap; color:#667085; font-weight:700;
@@ -173,7 +179,7 @@ select {
 .data-table.wide { min-width: 1600px; }
 .data-table th, .data-table td { padding:9px 10px; border-bottom:1px solid #edf0f4; border-right:1px solid #edf0f4; white-space:nowrap; vertical-align:middle; }
 .data-table th:last-child, .data-table td:last-child { border-right:0; }
-.data-table thead th { position:sticky; top:0; z-index:3; background:#f5f7fa; color:#475467; text-align:center; font-weight:800; }
+.data-table thead th { position:static; background:#f5f7fa; color:#475467; text-align:center; font-weight:800; }
 .data-table tbody tr:hover td { background:#f8fbff; }
 .data-table tbody tr.self-row td { background:#f0f6ff; font-weight:700; }
 .data-table td.left { text-align:left; }
@@ -184,6 +190,14 @@ select {
 .table-note { text-align:right; color:var(--muted); font-size:11px; margin:0 2px 7px; }
 .toolbar {
   display:flex; flex-wrap:wrap; gap:10px 16px; align-items:end; margin-bottom:12px; padding:12px; background:#f8fafc; border:1px solid #e7ebf0; border-radius:10px;
+}
+.tab-panel > .toolbar {
+  position: sticky;
+  top: var(--market-tabs-height, 47px);
+  z-index: 80;
+  background: rgba(248, 250, 252, .98);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 7px 14px rgba(30, 41, 59, .06);
 }
 .toolbar label { display:flex; flex-direction:column; gap:5px; font-size:11px; font-weight:700; color:#475467; }
 .toolbar select { min-width:170px; }
@@ -352,4 +366,49 @@ select {
   font-weight: 800;
   vertical-align: middle;
   white-space: nowrap;
+}
+
+
+/* v1.1.6: 3段sticky（タブ → 操作行 → 表ヘッダー） */
+.sticky-table-head {
+  position: fixed;
+  z-index: 75;
+  display: none;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-top: 0;
+  background: #f5f7fa;
+  box-shadow: 0 7px 16px rgba(30, 41, 59, .10);
+  pointer-events: auto;
+}
+.sticky-table-head.visible {
+  display: block;
+}
+.sticky-table-head-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+.sticky-table-head .sticky-head-table {
+  margin: 0;
+  table-layout: fixed;
+}
+.sticky-table-head .sticky-head-table thead th {
+  position: static;
+  background: #f5f7fa;
+}
+.sticky-table-head .sticky-head-table thead th.fixed-axis-head {
+  background: #edf2f7;
+}
+.sticky-table-head .sticky-head-table thead th.sort-active {
+  background: #e8f2ff;
+}
+
+@media (max-width: 620px) {
+  /* スマホは操作行の占有率が大きいため、タブ＋表ヘッダーのみ固定 */
+  .tab-panel > .toolbar {
+    position: static;
+    top: auto;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
 }
