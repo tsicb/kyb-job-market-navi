@@ -230,15 +230,26 @@ select:focus-visible {
 .toolbar label { display:flex; flex-direction:column; gap:5px; font-size:11px; font-weight:700; color:#475467; }
 .toolbar select { min-width:170px; }
 .section-caption { color:var(--muted); font-size:12px; margin:0 0 8px; }
-.chart-card { border:1px solid var(--border); border-radius:10px; background:#fff; padding:14px; margin-bottom:12px; }
+.chart-card { border:1px solid var(--border); border-radius:10px; background:#fff; padding:14px; margin-bottom:12px; width:100%; }
 .chart-title { font-size:13px; font-weight:800; margin-bottom:10px; }
-.line-chart { min-height:330px; overflow:auto; }
-.chart-svg { width:100%; min-width:720px; height:310px; display:block; }
+.line-chart { width:100%; min-height:0; overflow-x:auto; overflow-y:visible; position:relative; }
+.chart-svg { width:100%; min-width:900px; height:auto; display:block; }
 .chart-grid { stroke:#e6eaf0; stroke-width:1; }
 .chart-axis { fill:#7c8799; font-size:10px; }
-.chart-legend { display:flex; flex-wrap:wrap; gap:8px 14px; margin-top:8px; color:#526078; font-size:11px; }
+.chart-axis-x { font-size:10px; }
+.chart-legend { display:flex; flex-wrap:wrap; gap:8px 14px; margin-top:9px; color:#526078; font-size:11px; }
 .legend-item { display:flex; align-items:center; gap:5px; }
-.legend-dot { width:9px; height:9px; border-radius:50%; display:inline-block; }
+.legend-item.selected { color:#21415B; font-weight:800; }
+.legend-dot { width:9px; height:9px; border-radius:50%; display:inline-block; flex:none; }
+.legend-selected-badge { display:inline-flex; align-items:center; min-height:17px; margin-left:2px; padding:1px 5px; border-radius:999px; background:#EAF6FD; border:1px solid #B8DDF5; color:#1565C0; font-size:9px; line-height:1; font-weight:800; }
+.chart-series { transition: stroke-opacity .12s ease; }
+.chart-series.selected { filter: drop-shadow(0 1px 1px rgba(37,99,235,.12)); }
+.chart-point { pointer-events:none; }
+.chart-data-label { font-size:9px; font-weight:700; paint-order:stroke; stroke:#fff; stroke-width:3px; stroke-linejoin:round; }
+.chart-data-label.selected { font-size:10px; font-weight:900; }
+.chart-data-label.latest { font-size:10px; }
+.chart-hover-guide { stroke:#8291A5; stroke-width:1; stroke-dasharray:4 4; pointer-events:none; }
+.chart-hit-zone { cursor:crosshair; }
 .source-note {
   display:flex; gap:10px; align-items:flex-start; margin:18px 4px 0; padding:13px 15px; border-radius:10px;
   background:#EEF7FA; color:#59657a; font-size:11px; line-height:1.6;
@@ -593,4 +604,68 @@ select:focus-visible {
   .summary-toolbar {
     align-items: flex-start;
   }
+}
+
+
+/* v1.1.10: 月別求人数グラフの分析性向上 */
+.chart-tooltip {
+  position: fixed;
+  z-index: 130;
+  min-width: 250px;
+  max-width: min(390px, calc(100vw - 28px));
+  max-height: min(440px, calc(100vh - 28px));
+  overflow: hidden;
+  padding: 11px 12px;
+  border: 1px solid rgba(148, 163, 184, .38);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .98);
+  color: var(--text);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, .18);
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+.chart-tooltip[hidden] { display:none; }
+.chart-tooltip-month {
+  padding-bottom: 7px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid #E7ECF1;
+  color: #344054;
+  font-size: 12px;
+  font-weight: 900;
+}
+.chart-tooltip-list { display:grid; gap:2px; }
+.chart-tooltip-row {
+  display:grid;
+  grid-template-columns: 9px minmax(0, 1fr) auto;
+  align-items:center;
+  gap:7px;
+  min-height: 24px;
+  padding: 2px 3px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+.chart-tooltip-row.selected { background:#EAF6FD; }
+.chart-tooltip-row strong { font-variant-numeric:tabular-nums; color:#344054; }
+.chart-tooltip-dot { width:8px; height:8px; border-radius:50%; display:block; }
+.chart-tooltip-job { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.chart-tooltip-row.selected .chart-tooltip-job { font-weight:900; color:#1565C0; }
+.chart-tooltip-badge {
+  display:inline-flex;
+  margin-left:5px;
+  padding:1px 5px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid #B8DDF5;
+  color:#1565C0;
+  font-size:9px;
+  font-weight:800;
+  vertical-align:1px;
+}
+
+@media (max-width: 920px) {
+  .chart-svg { min-width: 820px; }
+}
+@media (max-width: 620px) {
+  .chart-svg { min-width: 780px; }
+  .chart-tooltip { min-width: 230px; }
 }

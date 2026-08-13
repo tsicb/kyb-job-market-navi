@@ -48,6 +48,7 @@
     prefTable: $("prefTable"),
     monthlyEmployment: $("monthlyEmployment"),
     monthlyJobLimit: $("monthlyJobLimit"),
+    monthlyDataLabels: $("monthlyDataLabels"),
     monthlyChartTitle: $("monthlyChartTitle"),
     monthlyChart: $("monthlyChart"),
     monthlyTable: $("monthlyTable"),
@@ -736,6 +737,7 @@
       document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === tab));
       document.querySelectorAll(".tab-panel").forEach(x => x.classList.remove("active"));
       $(`tab-${tab.dataset.tab}`).classList.add("active");
+      if (tab.dataset.tab !== "monthly") hideMonthlyTooltip();
     });
 
     els.prefMode.addEventListener("change", renderPrefecture);
@@ -744,6 +746,7 @@
     els.prefJobSelect.addEventListener("change", renderPrefecture);
     els.monthlyEmployment.addEventListener("change", renderMonthly);
     els.monthlyJobLimit.addEventListener("change", renderMonthly);
+    els.monthlyDataLabels?.addEventListener("change", renderMonthly);
     els.conditionJobSelect.addEventListener("change", renderConditions);
     els.conditionEmployment.addEventListener("change", renderConditions);
 
@@ -768,6 +771,8 @@
       });
     });
 
+    window.addEventListener("scroll", hideMonthlyTooltip, { passive: true });
+    window.addEventListener("blur", hideMonthlyTooltip);
     initStickyMarketView();
   }
 
@@ -1322,6 +1327,7 @@
     const emp = els.monthlyEmployment.value;
     const key = EMP[emp].monthly;
     const limit = Number(els.monthlyJobLimit.value || 6);
+    const labelMode = els.monthlyDataLabels?.value || "none";
     const jobs = state.related.slice(0, limit);
     const months = [...new Set(jobs.flatMap(j => (state.idx.monthlyByJob.get(j.job_id) || []).map(r => r.month)))].sort();
 
@@ -1331,7 +1337,8 @@
     });
 
     els.monthlyChartTitle.textContent = `${EMP[emp].label}｜月別求人数の推移（検索スコア上位${jobs.length}職種）`;
-    els.monthlyChart.innerHTML = buildLineChart(months, jobs, byJobMonth);
+    els.monthlyChart.innerHTML = buildLineChart(months, jobs, byJobMonth, labelMode);
+    bindMonthlyChartInteractions(months, jobs, byJobMonth, emp);
 
     els.monthlyTable.innerHTML = `<thead><tr><th>年月</th>${jobs.map(j => `<th>${escapeHtml(j.job_name)}</th>`).join("")}</tr></thead>
       <tbody>${months.map(m => `<tr><td class="left">${escapeHtml(m)}</td>${jobs.map(j => {
@@ -1340,11 +1347,14 @@
       }).join("")}</tr>`).join("")}</tbody>`;
   }
 
-  function buildLineChart(months, jobs, byJobMonth) {
+  function buildLineChart(months, jobs, byJobMonth, labelMode = "none") {
     if (!months.length || !jobs.length) return '<div class="empty-hint">月別データがありません。</div>';
 
-    const width = 1000, height = 270;
-    const pad = { left: 65, right: 25, top: 20, bottom: 40 };
+    // CSS側でSVGを横幅いっぱいに拡大し、高さはviewBox比率から自然に決める。
+    // 旧版は固定高さ310pxのため、超横長画面ではSVGのaspect ratio維持により左右に大きな余白が生じていた。
+    const width = 1400, height = 360;
+    const latestLabels = labelMode === "latest";
+    const pad = { left: 76, right: latestLabels ? 120 : 42, top: 28, bottom: 48 };
     const plotW = width - pad.left - pad.right;
     const plotH = height - pad.top - pad.bottom;
     const values = [];
@@ -1352,53 +1362,205 @@
       const v = byJobMonth.get(j.job_id).get(m);
       if (v !== undefined && v !== null) values.push(v);
     }));
+
     const max = Math.max(...values, 1);
-    const niceMax = niceCeil(max);
+    const axis = niceYAxis(max);
+    const niceMax = axis.max;
     const x = i => pad.left + (months.length <= 1 ? plotW / 2 : (i / (months.length - 1)) * plotW);
     const y = v => pad.top + plotH - (v / niceMax) * plotH;
     const palette = ["#2563eb","#059669","#d97706","#7c3aed","#dc2626","#0891b2","#4f46e5","#65a30d","#c2410c","#be185d"];
+    const colorByJob = new Map(jobs.map((j, i) => [j.job_id, palette[i % palette.length]]));
 
-    let svg = `<svg class="chart-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="月別求人数推移">`;
+    let svg = `<svg class="chart-svg" width="100%" viewBox="0 0 ${width} ${height}" role="img" aria-label="月別求人数推移">`;
 
-    for (let i = 0; i <= 5; i++) {
-      const val = niceMax * (i / 5);
-      const yy = y(val);
+    for (let val = 0; val <= niceMax + axis.step * 0.01; val += axis.step) {
+      const yy = y(Math.min(val, niceMax));
       svg += `<line class="chart-grid" x1="${pad.left}" y1="${yy}" x2="${width-pad.right}" y2="${yy}"/>`;
-      svg += `<text class="chart-axis" x="${pad.left-8}" y="${yy+3}" text-anchor="end">${compactNumber(val)}</text>`;
+      svg += `<text class="chart-axis" x="${pad.left-10}" y="${yy+4}" text-anchor="end">${compactNumber(val)}</text>`;
     }
 
     const tickEvery = Math.max(1, Math.ceil(months.length / 10));
     months.forEach((m, i) => {
       if (i % tickEvery === 0 || i === months.length - 1) {
-        svg += `<text class="chart-axis" x="${x(i)}" y="${height-14}" text-anchor="middle">${escapeHtml(m)}</text>`;
+        svg += `<text class="chart-axis chart-axis-x" x="${x(i)}" y="${height-16}" text-anchor="middle">${escapeHtml(m)}</text>`;
       }
     });
 
-    jobs.forEach((j, ji) => {
-      const color = palette[ji % palette.length];
-      const points = months.map((m,i) => {
+    // 周辺系列を先に、選択対象を最後に描くことで選択対象を視覚的に前面へ出す。
+    const drawJobs = [...jobs].sort((a, b) => Number(a.job_id === state.selectedJobId) - Number(b.job_id === state.selectedJobId));
+    const pointCache = new Map();
+    drawJobs.forEach(j => {
+      const color = colorByJob.get(j.job_id);
+      const selected = j.job_id === state.selectedJobId;
+      const points = months.map((m, i) => {
         const v = byJobMonth.get(j.job_id).get(m);
-        return (v === undefined || v === null) ? null : { x:x(i), y:y(v), v, m };
+        return (v === undefined || v === null) ? null : { x: x(i), y: y(v), v, m, monthIndex: i };
       }).filter(Boolean);
+      pointCache.set(j.job_id, points);
       if (!points.length) return;
-      const d = points.map((p,i) => `${i ? "L" : "M"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
-      svg += `<path d="${d}" fill="none" stroke="${color}" stroke-width="${j.job_id === state.selectedJobId ? 3 : 2}" stroke-linejoin="round" stroke-linecap="round"/>`;
+      const d = points.map((p, i) => `${i ? "L" : "M"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
+      svg += `<path class="chart-series${selected ? " selected" : ""}" data-job-id="${escapeHtml(j.job_id)}" d="${d}" fill="none" stroke="${color}" stroke-width="${selected ? 4 : 2.1}" stroke-opacity="${selected ? 1 : .76}" stroke-linejoin="round" stroke-linecap="round"/>`;
       points.forEach(p => {
-        svg += `<circle cx="${p.x}" cy="${p.y}" r="${j.job_id === state.selectedJobId ? 3.2 : 2.3}" fill="${color}"><title>${escapeHtml(j.job_name)} ${escapeHtml(p.m)}：${formatInt(p.v)}件</title></circle>`;
+        svg += `<circle class="chart-point${selected ? " selected" : ""}" cx="${p.x}" cy="${p.y}" r="${selected ? 4.1 : 2.7}" fill="${color}" fill-opacity="${selected ? 1 : .88}"/>`;
       });
+    });
+
+    if (labelMode === "all") {
+      jobs.forEach(j => {
+        const selected = j.job_id === state.selectedJobId;
+        const color = colorByJob.get(j.job_id);
+        (pointCache.get(j.job_id) || []).forEach(p => {
+          svg += `<text class="chart-data-label${selected ? " selected" : ""}" x="${p.x}" y="${Math.max(pad.top + 10, p.y - 8)}" text-anchor="middle" fill="${color}">${compactNumber(p.v)}</text>`;
+        });
+      });
+    } else if (labelMode === "latest") {
+      const lastIndex = months.length - 1;
+      const labelEntries = jobs.map(j => {
+        const p = (pointCache.get(j.job_id) || []).find(p => p.monthIndex === lastIndex);
+        return p ? { jobId: j.job_id, point: p, color: colorByJob.get(j.job_id), selected: j.job_id === state.selectedJobId } : null;
+      }).filter(Boolean);
+      const adjusted = spreadLabelY(labelEntries.map(e => e.point.y), pad.top + 10, pad.top + plotH - 4, 14);
+      labelEntries.forEach((entry, i) => {
+        svg += `<text class="chart-data-label latest${entry.selected ? " selected" : ""}" x="${entry.point.x + 10}" y="${adjusted[i] + 4}" text-anchor="start" fill="${entry.color}">${compactNumber(entry.point.v)}</text>`;
+      });
+    }
+
+    // ホバー時の月ガイド。実際の表示切替はbindMonthlyChartInteractions()で行う。
+    svg += `<line class="chart-hover-guide" x1="${pad.left}" y1="${pad.top}" x2="${pad.left}" y2="${pad.top + plotH}" visibility="hidden"/>`;
+
+    // 月ごとの透明ヒット領域。点そのものを狙わなくても月単位の比較ツールチップを出せる。
+    months.forEach((m, i) => {
+      const cx = x(i);
+      const left = i === 0 ? pad.left : (x(i - 1) + cx) / 2;
+      const right = i === months.length - 1 ? pad.left + plotW : (cx + x(i + 1)) / 2;
+      svg += `<rect class="chart-hit-zone" data-month-index="${i}" data-guide-x="${cx}" x="${left}" y="${pad.top}" width="${Math.max(1, right-left)}" height="${plotH}" fill="transparent" aria-hidden="true"/>`;
     });
     svg += `</svg>`;
 
-    const legend = `<div class="chart-legend">${jobs.map((j,i) => `<span class="legend-item"><i class="legend-dot" style="background:${palette[i%palette.length]}"></i>${escapeHtml(j.job_name)}${j.job_id === state.selectedJobId ? "（選択中）" : ""}</span>`).join("")}</div>`;
+    const legend = `<div class="chart-legend">${jobs.map((j, i) => `<span class="legend-item${j.job_id === state.selectedJobId ? " selected" : ""}"><i class="legend-dot" style="background:${palette[i%palette.length]}"></i>${escapeHtml(j.job_name)}${j.job_id === state.selectedJobId ? '<span class="legend-selected-badge">選択中</span>' : ""}</span>`).join("")}</div>`;
     return svg + legend;
   }
 
-  function niceCeil(n) {
-    if (n <= 0) return 1;
-    const exp = Math.pow(10, Math.floor(Math.log10(n)));
-    const f = n / exp;
-    const nice = f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10;
-    return nice * exp;
+  function niceYAxis(maxValue) {
+    const max = Math.max(Number(maxValue) || 0, 1);
+    const headroomMax = max * 1.12;
+    const targetIntervals = 7;
+    const rawStep = headroomMax / targetIntervals;
+    const step = niceStepCeil(rawStep);
+    const axisMax = Math.max(step, Math.ceil(headroomMax / step) * step);
+    return { max: axisMax, step };
+  }
+
+  function niceStepCeil(value) {
+    if (!(value > 0)) return 1;
+    const exp = Math.pow(10, Math.floor(Math.log10(value)));
+    const fraction = value / exp;
+    const steps = [1, 2, 2.5, 5, 10];
+    const niceFraction = steps.find(x => fraction <= x) || 10;
+    return niceFraction * exp;
+  }
+
+  function spreadLabelY(values, minY, maxY, gap) {
+    if (!values.length) return [];
+    const entries = values.map((y, index) => ({ y, index })).sort((a, b) => a.y - b.y);
+    entries[0].placed = Math.max(minY, entries[0].y);
+    for (let i = 1; i < entries.length; i++) {
+      entries[i].placed = Math.max(entries[i].y, entries[i - 1].placed + gap);
+    }
+    if (entries[entries.length - 1].placed > maxY) {
+      entries[entries.length - 1].placed = maxY;
+      for (let i = entries.length - 2; i >= 0; i--) {
+        entries[i].placed = Math.min(entries[i].placed, entries[i + 1].placed - gap);
+      }
+      if (entries[0].placed < minY) {
+        const shift = minY - entries[0].placed;
+        entries.forEach(e => { e.placed += shift; });
+      }
+    }
+    const result = Array(values.length);
+    entries.forEach(e => { result[e.index] = e.placed; });
+    return result;
+  }
+
+  function monthlyTooltipElement() {
+    let tooltip = document.getElementById("monthlyChartTooltip");
+    if (tooltip) return tooltip;
+    tooltip = document.createElement("div");
+    tooltip.id = "monthlyChartTooltip";
+    tooltip.className = "chart-tooltip";
+    tooltip.hidden = true;
+    tooltip.setAttribute("role", "status");
+    tooltip.setAttribute("aria-live", "polite");
+    document.body.appendChild(tooltip);
+    return tooltip;
+  }
+
+  function hideMonthlyTooltip() {
+    const tooltip = document.getElementById("monthlyChartTooltip");
+    if (tooltip) tooltip.hidden = true;
+    const guide = els.monthlyChart?.querySelector(".chart-hover-guide");
+    if (guide) guide.setAttribute("visibility", "hidden");
+  }
+
+  function bindMonthlyChartInteractions(months, jobs, byJobMonth, emp) {
+    const svg = els.monthlyChart.querySelector(".chart-svg");
+    if (!svg) {
+      hideMonthlyTooltip();
+      return;
+    }
+    const tooltip = monthlyTooltipElement();
+    const guide = svg.querySelector(".chart-hover-guide");
+    const palette = ["#2563eb","#059669","#d97706","#7c3aed","#dc2626","#0891b2","#4f46e5","#65a30d","#c2410c","#be185d"];
+    const colorByJob = new Map(jobs.map((j, i) => [j.job_id, palette[i % palette.length]]));
+
+    function showForZone(zone, event) {
+      const index = Number(zone.dataset.monthIndex);
+      const month = months[index];
+      if (!month) return;
+      const rows = jobs.map(j => ({
+        job: j,
+        value: byJobMonth.get(j.job_id)?.get(month),
+        color: colorByJob.get(j.job_id),
+        selected: j.job_id === state.selectedJobId
+      })).sort((a, b) => {
+        const av = a.value === null || a.value === undefined ? -Infinity : a.value;
+        const bv = b.value === null || b.value === undefined ? -Infinity : b.value;
+        return bv - av;
+      });
+
+      tooltip.innerHTML = `<div class="chart-tooltip-month">${escapeHtml(month)}｜${escapeHtml(EMP[emp].label)}</div>
+        <div class="chart-tooltip-list">${rows.map(r => `<div class="chart-tooltip-row${r.selected ? " selected" : ""}">
+          <i class="chart-tooltip-dot" style="background:${r.color}"></i>
+          <span class="chart-tooltip-job">${escapeHtml(r.job.job_name)}${r.selected ? '<span class="chart-tooltip-badge">選択中</span>' : ""}</span>
+          <strong>${r.value === null || r.value === undefined ? "—" : `${formatInt(r.value)}件`}</strong>
+        </div>`).join("")}</div>`;
+      tooltip.hidden = false;
+
+      if (guide) {
+        const gx = zone.dataset.guideX;
+        guide.setAttribute("x1", gx);
+        guide.setAttribute("x2", gx);
+        guide.setAttribute("visibility", "visible");
+      }
+
+      // 固定配置にして横スクロール領域にもクリップされないようにする。
+      const margin = 14;
+      const offset = 16;
+      let left = event.clientX + offset;
+      let top = event.clientY + offset;
+      const rect = tooltip.getBoundingClientRect();
+      if (left + rect.width > window.innerWidth - margin) left = event.clientX - rect.width - offset;
+      if (top + rect.height > window.innerHeight - margin) top = event.clientY - rect.height - offset;
+      tooltip.style.left = `${Math.max(margin, left)}px`;
+      tooltip.style.top = `${Math.max(margin, top)}px`;
+    }
+
+    els.monthlyChart.onpointermove = event => {
+      const zone = event.target.closest?.(".chart-hit-zone");
+      if (!zone) return;
+      showForZone(zone, event);
+    };
+    els.monthlyChart.onpointerleave = hideMonthlyTooltip;
   }
 
   function renderConditions() {
