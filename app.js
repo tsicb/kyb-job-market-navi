@@ -86,6 +86,28 @@
     }
   };
 
+  const LOADER = {
+    requestTimeoutMs: Number(CONFIG.loader?.requestTimeoutMs) || 10000,
+    retries: Math.max(1, Number(CONFIG.loader?.retries) || 3),
+    retryBaseDelayMs: Math.max(100, Number(CONFIG.loader?.retryBaseDelayMs) || 700),
+    csvConcurrency: Math.max(1, Number(CONFIG.loader?.csvConcurrency) || 2),
+    cacheName: CONFIG.loader?.cacheName || "job-market-navi-market-v1",
+    cacheMetaKey: CONFIG.loader?.cacheMetaKey || "job-market-navi-market-cache-meta-v1"
+  };
+
+  const MARKET_DATASETS = [
+    { key: "jobSummary", label: "職種マスタ", url: CONFIG.csv.jobSummary, requiredColumn: "job_id" },
+    { key: "prefecture", label: "都道府県別給与", url: CONFIG.csv.prefectureSalary, requiredColumn: "job_id" },
+    { key: "monthly", label: "月別求人数", url: CONFIG.csv.monthlyJobs, requiredColumn: "job_id" },
+    { key: "conditions", label: "条件別給与", url: CONFIG.csv.conditionSalary, requiredColumn: "job_id" }
+  ];
+
+  const STATIC_DATASETS = [
+    { key: "classification", label: "職種分類マスタ", url: CONFIG.json.classification, requiredColumn: "job_id" },
+    { key: "tags", label: "職種タグマスタ", url: CONFIG.json.tags, requiredColumn: "job_id" },
+    { key: "relations", label: "職種関連マスタ", url: CONFIG.json.relations, requiredColumn: "source_job_id" }
+  ];
+
   function normalize(s) {
     return String(s ?? "")
       .normalize("NFKC")
@@ -194,57 +216,292 @@
       .map(r => Object.fromEntries(headers.map((h, i) => [h, r[i] ?? ""])));
   }
 
-  async function fetchText(url) {
-    const res = await fetch(url, { cache: "no-store" });
-    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-    return res.text();
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async function fetchJson(url) {
-    const res = await fetch(url, { cache: "no-store" });
-    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-    return res.json();
+  function setStatus(text, type = "", title = "") {
+    els.dataStatus.textContent = text;
+    els.dataStatus.classList.remove("ok", "warn", "error");
+    if (type) els.dataStatus.classList.add(type);
+    els.dataStatus.title = title || "";
+  }
+
+  function clearLoadError() {
+    document.querySelectorAll(".load-error-box").forEach(el => el.remove());
+  }
+
+  function showLoadError(err) {
+    clearLoadError();
+    setStatus("データ読込エラー", "error", err?.message || "");
+    document.querySelector(".search-panel").insertAdjacentHTML(
+      "afterend",
+      `<div class="error-box load-error-box"><strong>データを読み込めませんでした。</strong><br>${escapeHtml(err?.message || "不明なエラー")}` +
+      `<br>通信が一時的に不安定な可能性があります。少し待ってからページを再読み込みしてください。</div>`
+    );
+  }
+
+  function isRetryableStatus(status) {
+    return status === 408 || status === 425 || status === 429 || status >= 500;
+  }
+
+  async function fetchWithTimeout(url, options = {}, timeoutMs = LOADER.requestTimeoutMs) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  async function fetchTextWithRetry(url, label, options = {}) {
+    let lastError = null;
+    for (let attempt = 1; attempt <= LOADER.retries; attempt++) {
+      try {
+        const res = await fetchWithTimeout(url, { cache: options.cacheMode || "no-cache" });
+        if (!res.ok) {
+          const err = new Error(`${label}: HTTP ${res.status} ${res.statusText}`);
+          err.retryable = isRetryableStatus(res.status);
+          throw err;
+        }
+        return await res.text();
+      } catch (err) {
+        const timedOut = err?.name === "AbortError";
+        const retryable = timedOut || err?.retryable !== false;
+        lastError = timedOut
+          ? new Error(`${label}: ${Math.round(LOADER.requestTimeoutMs / 1000)}秒でタイムアウト`)
+          : err;
+        console.warn(`[loader] ${label} attempt ${attempt}/${LOADER.retries} failed`, err);
+        if (!retryable || attempt >= LOADER.retries) break;
+        const jitter = Math.floor(Math.random() * 250);
+        await sleep(LOADER.retryBaseDelayMs * attempt + jitter);
+      }
+    }
+    throw lastError || new Error(`${label}: 取得に失敗しました。`);
+  }
+
+  async function fetchJsonWithRetry(url, label) {
+    const text = await fetchTextWithRetry(url, label, { cacheMode: "default" });
+    try {
+      return JSON.parse(text);
+    } catch (err) {
+      throw new Error(`${label}: JSON形式を解析できませんでした。`);
+    }
+  }
+
+  function validateDataset(label, data, requiredColumn) {
+    if (!Array.isArray(data) || !data.length || !(requiredColumn in data[0])) {
+      throw new Error(`${label} の形式を確認してください。`);
+    }
+  }
+
+  async function mapLimit(items, limit, fn) {
+    let cursor = 0;
+    const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+      while (true) {
+        const index = cursor++;
+        if (index >= items.length) return;
+        await fn(items[index], index);
+      }
+    });
+    await Promise.all(workers);
+  }
+
+  function cacheRequest(meta) {
+    const u = new URL(`./__market_cache__/${encodeURIComponent(meta.key)}.txt`, location.href);
+    return new Request(u.href, { method: "GET" });
+  }
+
+  async function readMarketCache() {
+    if (!("caches" in window)) return null;
+    try {
+      const cache = await caches.open(LOADER.cacheName);
+      const texts = {};
+      const rows = {};
+      for (const meta of MARKET_DATASETS) {
+        const response = await cache.match(cacheRequest(meta));
+        if (!response) return null;
+        const text = await response.text();
+        const parsed = parseCSV(text);
+        validateDataset(`${meta.label}（キャッシュ）`, parsed, meta.requiredColumn);
+        texts[meta.key] = text;
+        rows[meta.key] = parsed;
+      }
+      let cachedAt = "";
+      try {
+        cachedAt = JSON.parse(localStorage.getItem(LOADER.cacheMetaKey) || "{}").cachedAt || "";
+      } catch (_) {}
+      return { texts, rows, cachedAt };
+    } catch (err) {
+      console.warn("[loader] cache read failed", err);
+      return null;
+    }
+  }
+
+  async function writeMarketCache(texts) {
+    if (!("caches" in window)) return;
+    try {
+      const cache = await caches.open(LOADER.cacheName);
+      for (const meta of MARKET_DATASETS) {
+        const text = texts[meta.key];
+        if (typeof text !== "string") throw new Error(`${meta.label}: キャッシュ対象データがありません。`);
+        await cache.put(
+          cacheRequest(meta),
+          new Response(text, { headers: { "Content-Type": "text/csv; charset=utf-8" } })
+        );
+      }
+      try {
+        localStorage.setItem(LOADER.cacheMetaKey, JSON.stringify({ cachedAt: new Date().toISOString() }));
+      } catch (_) {}
+    } catch (err) {
+      // Cache failure must never make the app itself fail.
+      console.warn("[loader] cache write failed", err);
+    }
+  }
+
+  function formatCacheTime(iso) {
+    if (!iso) return "";
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "";
+    return new Intl.DateTimeFormat("ja-JP", {
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit"
+    }).format(d);
+  }
+
+  async function loadStaticData() {
+    setStatus("固定マスタを確認中…");
+    const values = {};
+    await Promise.all(STATIC_DATASETS.map(async meta => {
+      const data = await fetchJsonWithRetry(meta.url, meta.label);
+      validateDataset(meta.label, data, meta.requiredColumn);
+      values[meta.key] = data;
+    }));
+    return values;
+  }
+
+  async function fetchMarketGroup(onProgress = null) {
+    const texts = {};
+    const rows = {};
+    const errors = [];
+    let completed = 0;
+
+    await mapLimit(MARKET_DATASETS, LOADER.csvConcurrency, async meta => {
+      try {
+        const text = await fetchTextWithRetry(meta.url, meta.label, { cacheMode: "no-cache" });
+        const parsed = parseCSV(text);
+        validateDataset(meta.label, parsed, meta.requiredColumn);
+        texts[meta.key] = text;
+        rows[meta.key] = parsed;
+      } catch (err) {
+        errors.push({ label: meta.label, error: err });
+      } finally {
+        completed++;
+        if (onProgress) onProgress(completed, MARKET_DATASETS.length, meta.label);
+      }
+    });
+
+    if (errors.length) {
+      const detail = errors.map(x => `${x.label}（${x.error?.message || "取得失敗"}）`).join(" / ");
+      throw new Error(`市場データの取得に失敗しました: ${detail}`);
+    }
+    return { texts, rows };
+  }
+
+  function applyStaticData(values) {
+    state.data.classification = values.classification;
+    state.data.tags = values.tags;
+    state.data.relations = values.relations;
+  }
+
+  function applyMarketData(rows) {
+    state.data.jobSummary = rows.jobSummary;
+    state.data.prefecture = rows.prefecture;
+    state.data.monthly = rows.monthly;
+    state.data.conditions = rows.conditions;
+  }
+
+  function initializeLoadedApp() {
+    validateLoadedData();
+    buildIndexes();
+    initializeControls();
+    state.loaded = true;
+  }
+
+  function refreshLoadedMarketData(rows) {
+    const previous = {
+      jobSummary: state.data.jobSummary,
+      prefecture: state.data.prefecture,
+      monthly: state.data.monthly,
+      conditions: state.data.conditions
+    };
+    try {
+      applyMarketData(rows);
+      validateLoadedData();
+      buildIndexes();
+      if (state.selectedJobId) renderAllResults();
+    } catch (err) {
+      applyMarketData(previous);
+      buildIndexes();
+      throw err;
+    }
+  }
+
+  async function refreshMarketInBackground(cachedAt = "") {
+    try {
+      const fresh = await fetchMarketGroup((done, total) => {
+        setStatus(
+          `前回データで表示｜最新版確認 ${done}/${total}`,
+          "warn",
+          cachedAt ? `前回正常取得: ${formatCacheTime(cachedAt)}` : "前回正常取得データを表示中"
+        );
+      });
+      refreshLoadedMarketData(fresh.rows);
+      void writeMarketCache(fresh.texts);
+      setStatus(`更新確認済み｜${state.data.classification.length}職種`, "ok", `市場データ確認: ${formatCacheTime(new Date().toISOString())}`);
+    } catch (err) {
+      console.warn("[loader] background refresh failed", err);
+      setStatus(
+        "前回データで表示｜更新確認失敗",
+        "warn",
+        `${cachedAt ? `前回正常取得: ${formatCacheTime(cachedAt)} / ` : ""}${err?.message || "最新版の確認に失敗"}`
+      );
+    }
   }
 
   async function loadData() {
+    clearLoadError();
     try {
-      els.dataStatus.textContent = "7データセットを読込中…";
-      const [
-        jobCsv, prefCsv, monthlyCsv, conditionCsv,
-        classification, tags, relations
-      ] = await Promise.all([
-        fetchText(CONFIG.csv.jobSummary),
-        fetchText(CONFIG.csv.prefectureSalary),
-        fetchText(CONFIG.csv.monthlyJobs),
-        fetchText(CONFIG.csv.conditionSalary),
-        fetchJson(CONFIG.json.classification),
-        fetchJson(CONFIG.json.tags),
-        fetchJson(CONFIG.json.relations)
+      const [staticData, cachedMarket] = await Promise.all([
+        loadStaticData(),
+        readMarketCache()
       ]);
+      applyStaticData(staticData);
 
-      state.data.jobSummary = parseCSV(jobCsv);
-      state.data.prefecture = parseCSV(prefCsv);
-      state.data.monthly = parseCSV(monthlyCsv);
-      state.data.conditions = parseCSV(conditionCsv);
-      state.data.classification = classification;
-      state.data.tags = tags;
-      state.data.relations = relations;
+      if (cachedMarket) {
+        applyMarketData(cachedMarket.rows);
+        initializeLoadedApp();
+        setStatus(
+          "前回データを表示｜最新版確認中…",
+          "warn",
+          cachedMarket.cachedAt ? `前回正常取得: ${formatCacheTime(cachedMarket.cachedAt)}` : "前回正常取得データを表示中"
+        );
+        void refreshMarketInBackground(cachedMarket.cachedAt);
+        return;
+      }
 
-      validateLoadedData();
-      buildIndexes();
-      initializeControls();
-
-      state.loaded = true;
-      els.dataStatus.textContent = `読込完了｜${state.data.classification.length}職種`;
-      els.dataStatus.classList.add("ok");
+      setStatus("市場データを取得中 0/4…");
+      const fresh = await fetchMarketGroup((done, total) => {
+        setStatus(`市場データを取得中 ${done}/${total}…`);
+      });
+      applyMarketData(fresh.rows);
+      initializeLoadedApp();
+      setStatus(`読込完了｜${state.data.classification.length}職種`, "ok");
+      void writeMarketCache(fresh.texts);
     } catch (err) {
       console.error(err);
-      els.dataStatus.textContent = "データ読込エラー";
-      els.dataStatus.classList.add("error");
-      document.querySelector(".search-panel").insertAdjacentHTML(
-        "afterend",
-        `<div class="error-box"><strong>データを読み込めませんでした。</strong><br>${escapeHtml(err.message)}<br>GitHub Pages上で再読み込みしてください。ローカルで確認する場合はHTTPサーバー経由で開いてください。</div>`
-      );
+      showLoadError(err);
     }
   }
 

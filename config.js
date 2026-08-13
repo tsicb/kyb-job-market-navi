@@ -10,5 +10,13 @@ window.APP_CONFIG = {
     tags: "./data/tags.json",
     relations: "./data/relations.json"
   },
+  loader: {
+    requestTimeoutMs: 10000,
+    retries: 3,
+    retryBaseDelayMs: 700,
+    csvConcurrency: 2,
+    cacheName: "job-market-navi-market-v1",
+    cacheMetaKey: "job-market-navi-market-cache-meta-v1"
+  },
   defaultExpandLevel: 2
 };
