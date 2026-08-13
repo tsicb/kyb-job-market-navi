@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="求人ボックスの職種別市場データを、関連職種とあわせて検索・比較するツール">
+  <title>求人市場ナビ｜職種・周辺職種の給与と求人動向</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%232563eb%22/><path d=%22M16 44V21h9l7 9 7-9h9v23h-8V32l-8 10-8-10v12z%22 fill=%22white%22/></svg>">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <div class="eyebrow">JOB MARKET NAVI</div>
+        <h1>求人市場ナビ</h1>
+        <p>知りたい職種を起点に、周辺職種まで給与・求人数・地域差・推移を比較</p>
+      </div>
+      <div id="dataStatus" class="status-pill">データ読込中…</div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="panel search-panel">
+      <div class="section-heading">
+        <div>
+          <span class="step">STEP 1</span>
+          <h2>知りたい仕事を探す</h2>
+        </div>
+        <p>職種名が分からなくても「ドライバー」「看護」「事務」などの言葉から探せます。</p>
+      </div>
+
+      <div class="search-grid">
+        <div class="search-block">
+          <label for="keywordInput">フリーワードから探す</label>
+          <div class="searchbox">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+            <input id="keywordInput" type="search" autocomplete="off" placeholder="例：ドライバー、看護、事務、IT">
+            <button id="clearKeyword" class="icon-button" type="button" aria-label="入力をクリア">×</button>
+          </div>
+          <div id="suggestions" class="suggestions" hidden></div>
+        </div>
+
+        <div class="or-separator"><span>または</span></div>
+
+        <div class="category-block">
+          <label>分類から絞り込む</label>
+          <div class="category-controls">
+            <select id="majorSelect" aria-label="大分類">
+              <option value="">大分類を選択</option>
+            </select>
+            <select id="middleSelect" aria-label="中分類" disabled>
+              <option value="">中分類を選択</option>
+            </select>
+            <button id="showCategoryJobs" class="secondary-button" type="button" disabled>候補を表示</button>
+          </div>
+          <div id="categoryCandidates" class="category-candidates" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="selectedPanel" class="panel selected-panel" hidden>
+      <div class="section-heading compact">
+        <div>
+          <span class="step">STEP 2</span>
+          <h2>本人職種と周辺範囲を決める</h2>
+        </div>
+      </div>
+
+      <div class="selected-layout">
+        <div id="selectedJobCard" class="selected-job-card"></div>
+        <div class="level-control">
+          <div class="control-label">周辺職種の広げ方</div>
+          <div class="segmented" id="levelButtons">
+            <button type="button" data-level="1">1｜厳密<span>同義・略称中心</span></button>
+            <button type="button" data-level="2" class="active">2｜標準<span>近縁＋同じ中分類</span></button>
+            <button type="button" data-level="3">3｜広め<span>同じ大分類まで</span></button>
+          </div>
+          <p id="relatedCount" class="muted"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultsPanel" class="results-panel" hidden>
+      <div class="section-heading result-heading">
+        <div>
+          <span class="step">STEP 3</span>
+          <h2>市場データを見る</h2>
+        </div>
+        <div id="lastUpdated" class="last-updated"></div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="市場データ">
+        <button class="tab active" type="button" data-tab="summary">全国市場</button>
+        <button class="tab" type="button" data-tab="prefecture">都道府県別給与</button>
+        <button class="tab" type="button" data-tab="monthly">月別求人数</button>
+        <button class="tab" type="button" data-tab="conditions">条件別給与</button>
+      </div>
+
+      <div id="tab-summary" class="tab-panel active">
+        <div id="summaryHighlights" class="highlights"></div>
+        <div class="table-note">緑＝本人より高い／多い　赤＝本人より低い／少ない</div>
+        <div class="table-wrap">
+          <table id="summaryTable" class="data-table wide"></table>
+        </div>
+      </div>
+
+      <div id="tab-prefecture" class="tab-panel">
+        <div class="toolbar">
+          <label>表示方法
+            <select id="prefMode">
+              <option value="compare">都道府県を固定して職種比較</option>
+              <option value="allPrefs">職種を固定して47都道府県</option>
+            </select>
+          </label>
+          <label id="prefectureControl">都道府県
+            <select id="prefectureSelect"></select>
+          </label>
+          <label id="prefJobControl" hidden>職種
+            <select id="prefJobSelect"></select>
+          </label>
+          <label>雇用形態
+            <select id="prefEmployment">
+              <option value="regular">正社員</option>
+              <option value="parttime">パート</option>
+              <option value="temp">派遣</option>
+            </select>
+          </label>
+        </div>
+        <div id="prefCaption" class="section-caption"></div>
+        <div class="table-wrap">
+          <table id="prefTable" class="data-table"></table>
+        </div>
+      </div>
+
+      <div id="tab-monthly" class="tab-panel">
+        <div class="toolbar">
+          <label>雇用形態
+            <select id="monthlyEmployment">
+              <option value="regular">正社員</option>
+              <option value="parttime">パート</option>
+              <option value="temp">派遣</option>
+            </select>
+          </label>
+          <label>比較職種数
+            <select id="monthlyJobLimit">
+              <option value="3">上位3職種</option>
+              <option value="6" selected>上位6職種</option>
+              <option value="10">上位10職種</option>
+            </select>
+          </label>
+        </div>
+        <div class="chart-card">
+          <div id="monthlyChartTitle" class="chart-title"></div>
+          <div id="monthlyChart" class="line-chart"></div>
+        </div>
+        <div class="table-wrap">
+          <table id="monthlyTable" class="data-table"></table>
+        </div>
+      </div>
+
+      <div id="tab-conditions" class="tab-panel">
+        <div class="toolbar">
+          <label>職種
+            <select id="conditionJobSelect">
+              <option value="all">本人＋周辺職種すべて</option>
+            </select>
+          </label>
+          <label>雇用形態
+            <select id="conditionEmployment">
+              <option value="all">すべて</option>
+              <option value="regular">正社員</option>
+              <option value="parttime">パート</option>
+              <option value="temp">派遣</option>
+            </select>
+          </label>
+        </div>
+        <div class="section-caption">「条件」は求人ボックスが各職種について給与統計を表示している関連条件です。</div>
+        <div class="table-wrap">
+          <table id="conditionTable" class="data-table"></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="source-note">
+      <strong>データについて</strong>
+      <span>求人ボックス「給料ナビ」の公開情報を集計したデータを使用しています。正社員は年収（万円）、パート・派遣は時給（円）です。給与は本データベースでは中央値として管理しています。</span>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
