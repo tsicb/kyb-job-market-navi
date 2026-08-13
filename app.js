@@ -31,8 +31,10 @@
     summaryTable: $("summaryTable"),
     prefMode: $("prefMode"),
     prefectureControl: $("prefectureControl"),
+    prefectureControlLabel: $("prefectureControlLabel"),
     prefectureSelect: $("prefectureSelect"),
     prefJobControl: $("prefJobControl"),
+    prefJobControlLabel: $("prefJobControlLabel"),
     prefJobSelect: $("prefJobSelect"),
     prefEmployment: $("prefEmployment"),
     prefCaption: $("prefCaption"),
@@ -914,44 +916,73 @@
   function renderPrefecture() {
     if (!state.selectedJobId) return;
     const mode = els.prefMode.value;
-    const emp = els.prefEmployment.value;
-    const meta = EMP[emp];
+    const emp = els.prefEmployment.value || "all";
+    const selectedPref = els.prefectureSelect.value || "東京都";
+    const selectedJobId = els.prefJobSelect.value || state.selectedJobId;
+    const selectedJob = state.idx.classById.get(selectedJobId);
 
-    els.prefectureControl.hidden = mode !== "compare";
-    els.prefJobControl.hidden = mode !== "allPrefs";
+    // 両モードとも2つの軸を常に見せる。役割だけを切り替える。
+    els.prefectureControl.hidden = false;
+    els.prefJobControl.hidden = false;
 
     if (mode === "compare") {
-      const pref = els.prefectureSelect.value || "東京都";
-      const baseRow = state.idx.prefByJob.get(state.selectedJobId)?.get(pref);
-      const base = numberOrNull(baseRow?.[meta.prefSalary]);
-
-      const rows = state.related.map(r => {
-        const pr = state.idx.prefByJob.get(r.job_id)?.get(pref);
-        const value = numberOrNull(pr?.[meta.prefSalary]);
-        const diff = value === null || base === null ? null : value - base;
-        return { ...r, value, diff };
-      });
-
-      els.prefCaption.textContent = `${pref}｜${meta.label}の給与を、本人職種と周辺職種で比較`;
-      els.prefTable.innerHTML = `<thead><tr><th>職種</th><th>抽出理由</th><th>${meta.label}給与</th><th>本人との差</th></tr></thead>
-        <tbody>${rows.map(r => `<tr class="${r.job_id === state.selectedJobId ? "self-row" : ""}">
-          <td class="left">${escapeHtml(r.job_name)}</td>
-          <td class="left">${escapeHtml(r.reason)}</td>
-          <td class="num">${formatSalary(r.value, emp)}</td>
-          <td class="num ${metricClass(r.diff)}">${formatDiff(r.diff, emp)}</td>
-        </tr>`).join("")}</tbody>`;
+      els.prefectureControlLabel.textContent = "固定する都道府県";
+      els.prefJobControlLabel.textContent = "注目する職種";
     } else {
-      const jobId = els.prefJobSelect.value || state.selectedJobId;
+      els.prefectureControlLabel.textContent = "注目する都道府県";
+      els.prefJobControlLabel.textContent = "固定する職種";
+    }
+
+    const salaryColumns = emp === "all"
+      ? [
+          { emp: "regular", label: "正社員 年収（万円）" },
+          { emp: "parttime", label: "パート 時給（円）" },
+          { emp: "temp", label: "派遣 時給（円）" }
+        ]
+      : [{ emp, label: `${EMP[emp].label}給与` }];
+
+    const salaryHead = salaryColumns.map(c => `<th>${c.label}</th>`).join("");
+
+    if (mode === "compare") {
+      const pref = selectedPref;
+      const rows = state.related.map(r => ({
+        ...r,
+        prefRow: state.idx.prefByJob.get(r.job_id)?.get(pref)
+      }));
+
+      els.prefCaption.innerHTML = `<strong>${escapeHtml(pref)}</strong>を固定して、本人職種と周辺職種の給与を比較しています。<span class="caption-sub">注目：${escapeHtml(selectedJob?.job_name || "")}</span>`;
+      els.prefTable.innerHTML = `<thead><tr>
+          <th>職種</th>
+          <th class="fixed-axis-head">都道府県 <span class="column-badge">固定</span></th>
+          ${salaryHead}
+        </tr></thead>
+        <tbody>${rows.map(r => {
+          const isFocus = r.job_id === selectedJobId;
+          return `<tr class="${isFocus ? "focus-row" : ""}">
+            <td class="left">${escapeHtml(r.job_name)}${isFocus ? ' <span class="focus-badge">基準</span>' : ""}</td>
+            <td class="left fixed-axis-cell">${escapeHtml(pref)}</td>
+            ${salaryColumns.map(c => `<td class="num">${formatSalary(r.prefRow?.[EMP[c.emp].prefSalary], c.emp)}</td>`).join("")}
+          </tr>`;
+        }).join("")}</tbody>`;
+    } else {
+      const jobId = selectedJobId;
       const c = state.idx.classById.get(jobId);
-      const national = numberOrNull(summaryValues(jobId)[meta.summarySalary]);
       const byPref = state.idx.prefByJob.get(jobId) || new Map();
 
-      els.prefCaption.textContent = `${c?.job_name || ""}｜${meta.label}の47都道府県データ（全国中央値との差を併記）`;
-      els.prefTable.innerHTML = `<thead><tr><th>都道府県</th><th>${meta.label}給与</th><th>全国中央値との差</th></tr></thead>
+      els.prefCaption.innerHTML = `<strong>${escapeHtml(c?.job_name || "")}</strong>を固定して、47都道府県の給与を比較しています。<span class="caption-sub">注目：${escapeHtml(selectedPref)}</span>`;
+      els.prefTable.innerHTML = `<thead><tr>
+          <th class="fixed-axis-head">職種 <span class="column-badge">固定</span></th>
+          <th>都道府県</th>
+          ${salaryHead}
+        </tr></thead>
         <tbody>${PREFECTURES.map(pref => {
-          const value = numberOrNull(byPref.get(pref)?.[meta.prefSalary]);
-          const diff = value === null || national === null ? null : value - national;
-          return `<tr><td class="left">${pref}</td><td class="num">${formatSalary(value, emp)}</td><td class="num ${metricClass(diff)}">${formatDiff(diff, emp)}</td></tr>`;
+          const pr = byPref.get(pref);
+          const isFocus = pref === selectedPref;
+          return `<tr class="${isFocus ? "focus-row" : ""}">
+            <td class="left fixed-axis-cell">${escapeHtml(c?.job_name || "")}</td>
+            <td class="left">${escapeHtml(pref)}${isFocus ? ' <span class="focus-badge">基準</span>' : ""}</td>
+            ${salaryColumns.map(col => `<td class="num">${formatSalary(pr?.[EMP[col.emp].prefSalary], col.emp)}</td>`).join("")}
+          </tr>`;
         }).join("")}</tbody>`;
     }
   }

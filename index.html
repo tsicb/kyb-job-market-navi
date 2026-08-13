@@ -113,14 +113,15 @@
               <option value="allPrefs">職種を固定して47都道府県</option>
             </select>
           </label>
-          <label id="prefectureControl">都道府県
+          <label id="prefectureControl"><span id="prefectureControlLabel">固定する都道府県</span>
             <select id="prefectureSelect"></select>
           </label>
-          <label id="prefJobControl" hidden>職種
+          <label id="prefJobControl"><span id="prefJobControlLabel">注目する職種</span>
             <select id="prefJobSelect"></select>
           </label>
           <label>雇用形態
             <select id="prefEmployment">
+              <option value="all" selected>すべて</option>
               <option value="regular">正社員</option>
               <option value="parttime">パート</option>
               <option value="temp">派遣</option>

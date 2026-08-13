@@ -223,3 +223,66 @@ select {
   .highlights { grid-template-columns:1fr 1fr; }
   .source-note { flex-direction:column; }
 }
+
+/* v1.1.3: 都道府県別給与の軸・基準を視覚化 */
+.section-caption strong {
+  color: var(--text);
+  font-weight: 800;
+}
+.caption-sub {
+  display: inline-block;
+  margin-left: 10px;
+  color: #667085;
+}
+.column-badge,
+.focus-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 18px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 800;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.column-badge {
+  margin-left: 4px;
+  background: #e9eef5;
+  color: #475467;
+  border: 1px solid #d8e0ea;
+}
+.focus-badge {
+  margin-left: 6px;
+  background: #e8f2ff;
+  color: #175cd3;
+  border: 1px solid #b9d5ff;
+}
+.data-table thead th.fixed-axis-head {
+  background: #edf2f7;
+}
+.data-table td.fixed-axis-cell {
+  background: #f7f9fc;
+  color: #475467;
+}
+.data-table tbody tr.focus-row td {
+  background: #eef6ff;
+  font-weight: 700;
+}
+.data-table tbody tr.focus-row td:first-child {
+  box-shadow: inset 4px 0 0 #3b82f6;
+}
+.data-table tbody tr.focus-row td.fixed-axis-cell {
+  background: #e8f1fb;
+}
+.data-table tbody tr.focus-row:hover td {
+  background: #e8f3ff;
+}
+
+@media (max-width: 620px) {
+  .caption-sub {
+    display: block;
+    margin: 3px 0 0;
+  }
+}
